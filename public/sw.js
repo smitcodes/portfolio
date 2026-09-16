@@ -22,7 +22,7 @@ self.addEventListener("install", (event) => {
     caches
       .open(CACHE_NAME)
       .then((cache) => cache.addAll(PRECACHE_URLS))
-      .then(() => self.skipWaiting())
+      .then(() => self.skipWaiting()),
   );
 });
 
@@ -31,9 +31,13 @@ self.addEventListener("activate", (event) => {
     caches
       .keys()
       .then((keys) =>
-        Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+        Promise.all(
+          keys
+            .filter((key) => key !== CACHE_NAME)
+            .map((key) => caches.delete(key)),
+        ),
       )
-      .then(() => self.clients.claim())
+      .then(() => self.clients.claim()),
   );
 });
 
@@ -51,12 +55,16 @@ self.addEventListener("fetch", (event) => {
       fetch(request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put("./index.html", copy));
+          caches
+            .open(CACHE_NAME)
+            .then((cache) => cache.put("./index.html", copy));
           return response;
         })
         .catch(() =>
-          caches.match("./index.html").then((cached) => cached || caches.match("./"))
-        )
+          caches
+            .match("./index.html")
+            .then((cached) => cached || caches.match("./")),
+        ),
     );
     return;
   }
@@ -72,6 +80,6 @@ self.addEventListener("fetch", (event) => {
         }
         return response;
       });
-    })
+    }),
   );
 });

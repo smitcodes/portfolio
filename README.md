@@ -27,14 +27,18 @@ contact links, about, education, skills, experience, projects and
 certifications. The UI reads from this file, so you never touch components to
 update content.
 
-**Replace files in `public/`:**
-| File / folder            | Purpose                                        |
-| ------------------------ | ---------------------------------------------- |
-| `public/resume.pdf`      | Add your real resume (Download Resume button)  |
-| `public/profile.jpg`     | Optional — Open Graph share image              |
-| `public/projects/*.jpg`  | Project screenshots, referenced in `portfolio.js` |
+**Replace files in `public/` (regenerate icons with `npm run assets` after editing `tools/`):**
+
+| File / folder                              | Purpose                                                        |
+| ------------------------------------------ | -------------------------------------------------------------- |
+| `public/resume.pdf`                        | Your resume (linked from Hero, résumé modal and palette)       |
+| `public/certificates/*.pdf`                | Certificate PDFs, referenced by `certifications[].certificate` |
+| `public/projects/*.jpg`                    | Project screenshots, referenced in `portfolio.js`              |
+| `public/icon-*.png`, `public/og-image.png` | Generated — run `npm run assets` after editing `tools/`        |
+| `tools/og-card.html`, `tools/maskable.svg` | Sources for the generated images                               |
 
 ### Projects
+
 Each project supports `title`, `category`, `description`, `technologies`,
 `github`, `demo` and `image`.
 
@@ -44,6 +48,7 @@ Each project supports `title`, `category`, `description`, `technologies`,
 - Leave `image` as `""` to show an auto-generated gradient placeholder.
 
 ### Certifications
+
 Add entries to the `certifications` array (a commented example is included).
 The section (and its nav link) only appears once you add at least one entry.
 

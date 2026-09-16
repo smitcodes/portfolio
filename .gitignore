@@ -17,3 +17,6 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# Local agent worktrees (Kilo Code) — machine-local, never commit
+.kilo/

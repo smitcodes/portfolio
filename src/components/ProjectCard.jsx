@@ -36,6 +36,13 @@ export const ProjectCard = React.memo(function ProjectCard({
   };
   const PlaceholderIcon = placeholder.icon;
 
+  // Skeleton behind lazy images: pulse until the photo decodes, then fade it
+  // in. Placeholder-by-category path is instant, so it skips this entirely.
+  const [imgLoaded, setImgLoaded] = React.useState(false);
+  React.useEffect(() => {
+    setImgLoaded(false);
+  }, [image]);
+
   // 3D tilt + cursor spotlight (desktop pointers only; off for reduced motion)
   const cardRef = React.useRef(null);
   const rawX = useMotionValue(0);
@@ -85,15 +92,26 @@ export const ProjectCard = React.memo(function ProjectCard({
       className="surface-card group flex cursor-pointer flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:border-accent-500 hover:shadow-lg"
     >
       {/* Media */}
-      <div className="aspect-video overflow-hidden">
+      <div className="relative aspect-video overflow-hidden">
         {image ? (
-          <img
-            src={image}
-            alt={`${title} — project screenshot`}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
+          <>
+            <div
+              aria-hidden="true"
+              className={`absolute inset-0 animate-pulse bg-base-800 motion-reduce:animate-none ${
+                imgLoaded ? "hidden" : "block"
+              }`}
+            />
+            <img
+              src={image}
+              alt={`${title} — project screenshot`}
+              loading="lazy"
+              decoding="async"
+              onLoad={() => setImgLoaded(true)}
+              className={`h-full w-full object-cover transition-all duration-500 group-hover:scale-[1.03] ${
+                imgLoaded ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          </>
         ) : (
           <div
             className={`grid h-full w-full place-items-center ${placeholder.className}`}

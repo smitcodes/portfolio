@@ -4,6 +4,15 @@ import { portfolio } from "./data/portfolio.js";
 import { Navbar } from "./components/Navbar.jsx";
 import { Hero } from "./components/Hero.jsx";
 import { ScrollProgress } from "./components/ScrollProgress.jsx";
+import {
+  AboutFallback,
+  CertificationsFallback,
+  ContactFallback,
+  ExperienceFallback,
+  ProjectsFallback,
+  SkillsFallback,
+  TechMarqueeFallback,
+} from "./components/Skeletons.jsx";
 
 /**
  * Code splitting: everything below the fold loads on demand so the initial
@@ -55,13 +64,13 @@ const ResumeModal = React.lazy(() =>
   })),
 );
 
-/** Layout-preserving placeholder while a below-fold chunk loads. */
-function SectionFallback() {
-  return (
-    <div className="page-container py-16" aria-hidden="true">
-      <div className="h-40 animate-pulse rounded-2xl border border-line bg-base-900" />
-    </div>
-  );
+/**
+ * Per-section Suspense wrapper: shows a shape-matched skeleton while the
+ * lazy chunk loads. Kept in the main bundle alongside the fallbacks so the
+ * placeholder paints instantly with zero extra requests.
+ */
+function LazySection({ fallback, children }) {
+  return <Suspense fallback={fallback}>{children}</Suspense>;
 }
 
 const BASE_SECTIONS = [
@@ -145,15 +154,29 @@ export function App() {
       />
       <main id="main-content" className="flex-1">
         <Hero />
-        <Suspense fallback={<SectionFallback />}>
+        <LazySection fallback={<TechMarqueeFallback />}>
           <TechMarquee />
+        </LazySection>
+        <LazySection fallback={<AboutFallback />}>
           <About />
+        </LazySection>
+        <LazySection fallback={<SkillsFallback />}>
           <Skills />
+        </LazySection>
+        <LazySection fallback={<ExperienceFallback />}>
           <Experience />
+        </LazySection>
+        <LazySection fallback={<ProjectsFallback />}>
           <Projects />
-          {hasCertifications && <Certifications />}
+        </LazySection>
+        {hasCertifications && (
+          <LazySection fallback={<CertificationsFallback />}>
+            <Certifications />
+          </LazySection>
+        )}
+        <LazySection fallback={<ContactFallback />}>
           <Contact />
-        </Suspense>
+        </LazySection>
       </main>
       <Suspense fallback={null}>
         <Footer onViewResume={openResume} />

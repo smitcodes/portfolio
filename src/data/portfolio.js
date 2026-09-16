@@ -107,7 +107,7 @@ export const portfolio = {
     {
       role: "Data Analytics Job Simulation",
       company: "Deloitte (Forage — Virtual Simulation)",
-      period: "Nov 2025 – Feb 2026",
+      period: "Jan 2026 – Feb 2026",
       description:
         "Completed Deloitte's virtual Data Analytics job simulation covering data analysis and forensic technology — from working with business data to presenting client-ready findings.",
       highlights: [

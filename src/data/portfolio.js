@@ -54,13 +54,6 @@ export const portfolio = {
       "I'm open to internships, entry-level roles and collaboration in software development and data analytics — if you'd like to talk about a project or opportunity, my inbox is always open.",
   },
 
-  // Shown as a compact "Now" strip under the hero.
-  now: {
-    status: "Open to internships & entry-level roles",
-    building: "a Spring Boot + MySQL college event platform",
-    learning: "data engineering with Python",
-  },
-
   stats: [
     // `source: "repos"` swaps in the live count from the GitHub API
     // (falls back to `value` when offline or rate-limited — see useGitHubStats).

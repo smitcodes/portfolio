@@ -11,9 +11,6 @@ import { ScrollProgress } from "./components/ScrollProgress.jsx";
  * ScrollProgress stay eager because they're above the fold.
  * Components use named exports, hence the `.then` mapping to `default`.
  */
-const NowStrip = React.lazy(() =>
-  import("./components/NowStrip.jsx").then((m) => ({ default: m.NowStrip })),
-);
 const TechMarquee = React.lazy(() =>
   import("./components/TechMarquee.jsx").then((m) => ({
     default: m.TechMarquee,
@@ -149,7 +146,6 @@ export function App() {
       <main id="main-content" className="flex-1">
         <Hero />
         <Suspense fallback={<SectionFallback />}>
-          <NowStrip />
           <TechMarquee />
           <About />
           <Skills />

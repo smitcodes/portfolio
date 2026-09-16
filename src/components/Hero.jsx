@@ -271,7 +271,7 @@ export function Hero() {
                 <span className="text-accent-400">stack</span>{" "}
                 <span className="text-faint">:</span>{" "}
                 <span className="text-secondary-400">
-                  "Java · React · Python"
+                  "Python · React · SQL"
                 </span>
                 {"\n"}
                 <span className="text-faint">{"};"}</span>

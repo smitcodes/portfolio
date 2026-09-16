@@ -229,20 +229,6 @@ export const portfolio = {
       certificate: "certificates/deloitte-job-simulation.pdf",
     },
     {
-      title: "Programming in C — The Complete Course",
-      issuer: "Udemy",
-      type: "Course",
-      date: "Dec 2023",
-      certificate: "certificates/udemy-programming-in-c.pdf",
-    },
-    {
-      title: "Programming Contest — Participation",
-      issuer: "Walchand Institute of Technology (Engineer's Day 2K24)",
-      type: "Competition",
-      date: "Aug – Sep 2024",
-      certificate: "certificates/wit-engineers-day-2k24.pdf",
-    },
-    {
       title: "Soft Skill Development",
       issuer: "NPTEL",
       type: "Course",

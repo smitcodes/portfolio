@@ -20,18 +20,45 @@
       property="og:description"
       content="Software development, data analytics and AI projects by Smit Shewale — Computer Science Engineering student."
     />
-    <meta property="og:url" content="https://smit-shewale.dev/" />
-    <meta property="og:image" content="/profile.jpg" />
+    <meta property="og:url" content="%SITE_URL%" />
+    <meta property="og:site_name" content="Smit Shewale" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="%SITE_URL%og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Smit Shewale — Computer Science Engineer working across software development, data analytics and AI."
+    />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="%SITE_URL%og-image.png" />
+    <meta
+      name="twitter:image:alt"
+      content="Smit Shewale — Computer Science Engineer working across software development, data analytics and AI."
+    />
     <meta name="twitter:title" content="Smit Shewale | Computer Science Engineer" />
     <meta
       name="twitter:description"
       content="Software development, data analytics and AI projects by Smit Shewale — Computer Science Engineering student."
     />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="%SITE_URL%" />
+
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Smit Shewale" />
+    <meta name="application-name" content="Smit Shewale" />
 
     <!-- Apply stored theme before first paint to avoid flashes -->
     <script>
@@ -55,6 +82,42 @@
           document.documentElement.setAttribute("data-theme", "dark");
         }
       })();
+    </script>
+
+    <!-- Structured data (Person) — helps Google build a rich result -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Smit Shewale",
+        "jobTitle": "Computer Science Engineer",
+        "description": "Computer Science Engineering student specializing in software development, data analytics and AI.",
+        "url": "%SITE_URL%",
+        "image": "%SITE_URL%og-image.png",
+        "email": "mailto:smit9552@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Solapur",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://github.com/smitcodes",
+          "https://www.linkedin.com/in/smitshewale"
+        ],
+        "knowsAbout": [
+          "Software Development",
+          "Data Analytics",
+          "Machine Learning",
+          "Artificial Intelligence",
+          "Database Design",
+          "Java",
+          "Spring Boot",
+          "React",
+          "Python",
+          "Pandas",
+          "MySQL"
+        ]
+      }
     </script>
   </head>
   <body>

@@ -54,8 +54,17 @@ export const portfolio = {
       "I'm open to internships, entry-level roles and collaboration in software development and data analytics — if you'd like to talk about a project or opportunity, my inbox is always open.",
   },
 
+  // Shown as a compact "Now" strip under the hero.
+  now: {
+    status: "Open to internships & entry-level roles",
+    building: "a Spring Boot + MySQL college event platform",
+    learning: "data engineering with Python",
+  },
+
   stats: [
-    { value: 10, suffix: "+", label: "Public Repos" },
+    // `source: "repos"` swaps in the live count from the GitHub API
+    // (falls back to `value` when offline or rate-limited — see useGitHubStats).
+    { value: 10, suffix: "", label: "Public Repos", source: "repos" },
     { value: 60, suffix: "", label: "Days Internship" },
     { value: 4, suffix: "", label: "Featured Projects" },
     { value: 20, suffix: "+", label: "Technologies" },
@@ -63,8 +72,8 @@ export const portfolio = {
   education: [
     {
       degree: "B.Tech — Computer Science Engineering",
-      institution: "WIT Solapur", // ← replace
-      period: "2023 – 2027", // ← replace
+      institution: "Walchand Institute of Technology, Solapur",
+      period: "2023 – 2027",
       description: "Pursuing — core focus on software engineering, databases and data-driven problem solving.",
     },
   ],

@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, ChevronRight, Menu, Moon, Palette, Sun, X } from "lucide-react";
+import { Check, ChevronRight, Menu, Moon, Palette, Search, Sun, X } from "lucide-react";
 import { portfolio } from "../data/portfolio.js";
 
 const ACCENTS = [
@@ -116,6 +116,15 @@ export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent 
         </nav>
 
         <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("portfolio:open-palette"))}
+            className="icon-btn"
+            aria-label="Open command palette"
+            title="Command palette (Ctrl+K)"
+          >
+            <Search className="h-4 w-4" aria-hidden="true" />
+          </button>
           <button
             type="button"
             onClick={onToggleTheme}

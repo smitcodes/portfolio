@@ -12,6 +12,8 @@ import { Footer } from "./components/Footer.jsx";
 import { BackToTop } from "./components/BackToTop.jsx";
 import { ScrollProgress } from "./components/ScrollProgress.jsx";
 import { TechMarquee } from "./components/TechMarquee.jsx";
+import { NowStrip } from "./components/NowStrip.jsx";
+import { CommandPalette } from "./components/CommandPalette.jsx";
 
 const BASE_SECTIONS = [
   { id: "about", label: "About" },
@@ -86,6 +88,7 @@ export function App() {
       />
       <main id="main-content" className="flex-1">
         <Hero />
+        <NowStrip />
         <TechMarquee />
         <About />
         <Skills />
@@ -96,6 +99,11 @@ export function App() {
       </main>
       <Footer />
       <BackToTop />
+      <CommandPalette
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        onChangeAccent={changeAccent}
+      />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { animate, useInView, useReducedMotion } from "framer-motion";
 import { portfolio } from "../data/portfolio.js";
+import { useGitHubStats } from "../lib/useGitHubStats.js";
 
 /**
  * Animated count-up stat tiles for the About section.
@@ -43,7 +44,18 @@ function Counter({ value, suffix, reduce }) {
 
 export function StatCounters() {
   const reduce = useReducedMotion();
-  const stats = portfolio.stats ?? [];
+  const live = useGitHubStats();
+
+  // Any stat marked `source: "repos"` prefers the live GitHub count, but the
+  // static value from portfolio.js is used until (or unless) that arrives.
+  const stats = React.useMemo(() => {
+    const base = portfolio.stats ?? [];
+    if (!live) return base;
+    return base.map((stat) =>
+      stat.source === "repos" ? { ...stat, value: live.publicRepos } : stat
+    );
+  }, [live]);
+
   if (stats.length === 0) return null;
 
   return (

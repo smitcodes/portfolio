@@ -703,3 +703,119 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+/* ============================================================
+   COMMAND PALETTE (⌘ / Ctrl + K)
+   ============================================================ */
+.cmdk-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 1rem 1rem;
+  background-color: rgba(2, 4, 8, 0.62);
+  backdrop-filter: blur(6px);
+}
+
+.cmdk-panel {
+  width: 100%;
+  max-width: 34rem;
+  overflow: hidden;
+  border-radius: 0.9rem;
+  border: 1px solid var(--color-line);
+  background-color: var(--color-base-900);
+  box-shadow: 0 32px 70px -28px rgba(0, 0, 0, 0.85);
+}
+
+.cmdk-search {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.85rem 1rem;
+}
+
+.cmdk-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-content);
+  font-size: 0.9rem;
+  outline: none;
+}
+.cmdk-input::placeholder {
+  color: var(--color-faint);
+}
+
+.cmdk-kbd {
+  border: 1px solid var(--color-line);
+  background-color: var(--color-base-800);
+  border-radius: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-faint);
+}
+
+.cmdk-list {
+  max-height: 21rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+}
+
+.cmdk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 0.55rem;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+.cmdk-item.is-active {
+  background-color: var(--color-base-800);
+  color: var(--color-content);
+}
+
+.cmdk-swatch {
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 1px var(--color-line);
+}
+
+.cmdk-group {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-faint);
+}
+
+.cmdk-empty {
+  padding: 1.4rem 0.8rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-faint);
+}
+
+.cmdk-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem;
+  border-top: 1px solid var(--color-line);
+  padding: 0.6rem 1rem;
+  font-size: 0.72rem;
+  color: var(--color-faint);
+}
+.cmdk-foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}

@@ -45,7 +45,7 @@ export function BackToTop() {
       {visible && (
         // `fixed` lives on the Magnetic wrapper: a transformed ancestor becomes
         // the containing block for fixed children, so the button can't hold it.
-        <Magnetic className="fixed bottom-6 right-6 z-40">
+        <Magnetic className="back-to-top fixed bottom-6 right-6 z-40">
           <motion.button
             type="button"
             onClick={scrollToTop}

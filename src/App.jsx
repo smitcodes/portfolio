@@ -1,21 +1,71 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import { portfolio } from "./data/portfolio.js";
 import { Navbar } from "./components/Navbar.jsx";
 import { Hero } from "./components/Hero.jsx";
-import { About } from "./components/About.jsx";
-import { Skills } from "./components/Skills.jsx";
-import { Experience } from "./components/Experience.jsx";
-import { Projects } from "./components/Projects.jsx";
-import { Certifications } from "./components/Certifications.jsx";
-import { Contact } from "./components/Contact.jsx";
-import { Footer } from "./components/Footer.jsx";
-import { BackToTop } from "./components/BackToTop.jsx";
 import { ScrollProgress } from "./components/ScrollProgress.jsx";
-import { TechMarquee } from "./components/TechMarquee.jsx";
-import { NowStrip } from "./components/NowStrip.jsx";
-import { CommandPalette } from "./components/CommandPalette.jsx";
-import { ResumeModal } from "./components/ResumeModal.jsx";
+
+/**
+ * Code splitting: everything below the fold loads on demand so the initial
+ * bundle stays lean (faster first paint on mobile). Hero / Navbar /
+ * ScrollProgress stay eager because they're above the fold.
+ * Components use named exports, hence the `.then` mapping to `default`.
+ */
+const NowStrip = React.lazy(() =>
+  import("./components/NowStrip.jsx").then((m) => ({ default: m.NowStrip })),
+);
+const TechMarquee = React.lazy(() =>
+  import("./components/TechMarquee.jsx").then((m) => ({
+    default: m.TechMarquee,
+  })),
+);
+const About = React.lazy(() =>
+  import("./components/About.jsx").then((m) => ({ default: m.About })),
+);
+const Skills = React.lazy(() =>
+  import("./components/Skills.jsx").then((m) => ({ default: m.Skills })),
+);
+const Experience = React.lazy(() =>
+  import("./components/Experience.jsx").then((m) => ({
+    default: m.Experience,
+  })),
+);
+const Projects = React.lazy(() =>
+  import("./components/Projects.jsx").then((m) => ({ default: m.Projects })),
+);
+const Certifications = React.lazy(() =>
+  import("./components/Certifications.jsx").then((m) => ({
+    default: m.Certifications,
+  })),
+);
+const Contact = React.lazy(() =>
+  import("./components/Contact.jsx").then((m) => ({ default: m.Contact })),
+);
+const Footer = React.lazy(() =>
+  import("./components/Footer.jsx").then((m) => ({ default: m.Footer })),
+);
+const BackToTop = React.lazy(() =>
+  import("./components/BackToTop.jsx").then((m) => ({ default: m.BackToTop })),
+);
+const CommandPalette = React.lazy(() =>
+  import("./components/CommandPalette.jsx").then((m) => ({
+    default: m.CommandPalette,
+  })),
+);
+const ResumeModal = React.lazy(() =>
+  import("./components/ResumeModal.jsx").then((m) => ({
+    default: m.ResumeModal,
+  })),
+);
+
+/** Layout-preserving placeholder while a below-fold chunk loads. */
+function SectionFallback() {
+  return (
+    <div className="page-container py-16" aria-hidden="true">
+      <div className="h-40 animate-pulse rounded-2xl border border-line bg-base-900" />
+    </div>
+  );
+}
 
 const BASE_SECTIONS = [
   { id: "about", label: "About" },
@@ -98,25 +148,33 @@ export function App() {
       />
       <main id="main-content" className="flex-1">
         <Hero />
-        <NowStrip />
-        <TechMarquee />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        {hasCertifications && <Certifications />}
-        <Contact />
+        <Suspense fallback={<SectionFallback />}>
+          <NowStrip />
+          <TechMarquee />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          {hasCertifications && <Certifications />}
+          <Contact />
+        </Suspense>
       </main>
-      <Footer onViewResume={openResume} />
-      <BackToTop />
-      <CommandPalette
-        theme={theme}
-        onToggleTheme={toggleTheme}
-        onChangeAccent={changeAccent}
-        onViewResume={openResume}
-      />
+      <Suspense fallback={null}>
+        <Footer onViewResume={openResume} />
+        <BackToTop />
+        <CommandPalette
+          theme={theme}
+          onToggleTheme={toggleTheme}
+          onChangeAccent={changeAccent}
+          onViewResume={openResume}
+        />
+      </Suspense>
       <AnimatePresence>
-        {resumeOpen && <ResumeModal onClose={closeResume} />}
+        {resumeOpen && (
+          <Suspense fallback={null}>
+            <ResumeModal onClose={closeResume} />
+          </Suspense>
+        )}
       </AnimatePresence>
     </div>
   );

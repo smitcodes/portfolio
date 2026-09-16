@@ -104,6 +104,18 @@ export const portfolio = {
         "Conducted exploratory data analysis (EDA) and produced analytical reports",
       ],
     },
+    {
+      role: "Data Analytics Job Simulation",
+      company: "Deloitte (Forage — Virtual Simulation)",
+      period: "Nov 2025 – Feb 2026",
+      description:
+        "Completed Deloitte's virtual Data Analytics job simulation covering data analysis and forensic technology — from working with business data to presenting client-ready findings.",
+      highlights: [
+        "Completed practical tasks in data analysis and forensic technology",
+        "Worked with business datasets to extract insights and support decisions",
+        "Certificate issued Feb 2026 — user verification HiDZEWQZY8hxfMDR9",
+      ],
+    },
   ],
 
   projects: [
@@ -209,18 +221,12 @@ export const portfolio = {
       certificate: "certificates/apexplanet-data-analytics-internship.pdf",
     },
     {
-      title: "Engineer's Day Celebration 2K24 — Certificate of Participation",
-      issuer: "Walchand Institute of Technology, Solapur",
-      type: "Achievement",
-      date: "2024",
-      certificate: "certificates/wit-engineers-day-2k24.pdf",
-    },
-    {
-      title: "Edge Computing",
-      issuer: "NPTEL",
-      type: "Course",
-      date: "2026",
-      certificate: "certificates/nptel-edge-computing.pdf",
+      title: "Deloitte Job Simulation",
+      issuer: "Deloitte (Forage)",
+      type: "Job Simulation",
+      date: "Feb 2026",
+      credentialId: "HiDZEWQZY8hxfMDR9",
+      certificate: "certificates/deloitte-job-simulation.pdf",
     },
     {
       title: "Soft Skill Development",
@@ -230,18 +236,11 @@ export const portfolio = {
       certificate: "certificates/nptel-soft-skill-development.pdf",
     },
     {
-      title: "Programming in C — The Complete Course",
-      issuer: "Udemy",
+      title: "Edge Computing",
+      issuer: "NPTEL",
       type: "Course",
-      date: "Dec 2023",
-      certificate: "certificates/udemy-programming-in-c.pdf",
-    },
-    {
-      title: "Deloitte Job Simulation",
-      issuer: "Deloitte (Forage)",
-      type: "Job Simulation",
-      date: "Feb 2026",
-      certificate: "certificates/deloitte-job-simulation.pdf",
+      date: "2026",
+      certificate: "certificates/nptel-edge-computing.pdf",
     },
   ],
 };

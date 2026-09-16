@@ -40,8 +40,8 @@ const browser = BROWSERS.find((p) => existsSync(p));
 if (!browser) {
   console.error(
     "✗ No Chrome or Edge found.\n" +
-      '  Set CHROME_PATH to your browser executable, e.g.\n' +
-      '  CHROME_PATH="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" npm run assets'
+      "  Set CHROME_PATH to your browser executable, e.g.\n" +
+      '  CHROME_PATH="C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" npm run assets',
   );
   process.exit(1);
 }
@@ -53,7 +53,13 @@ const maskable = toFileUrl(path.join(root, "tools", "maskable.svg"));
 
 /** Each job renders one source file at an exact pixel size. */
 const jobs = [
-  { out: "og-image.png", src: ogCard, w: 1200, h: 630, label: "social share card" },
+  {
+    out: "og-image.png",
+    src: ogCard,
+    w: 1200,
+    h: 630,
+    label: "social share card",
+  },
   ...[32, 180, 192, 512].map((size) => ({
     out: `icon-${size}.png`,
     src: favicon,
@@ -112,7 +118,9 @@ for (const job of jobs) {
 
   if (rendered) {
     const kb = (statSync(outPath).size / 1024).toFixed(1);
-    console.log(`✓ public/${job.out}  ${job.w}x${job.h}  ${kb} kB  (${job.label})`);
+    console.log(
+      `✓ public/${job.out}  ${job.w}x${job.h}  ${kb} kB  (${job.label})`,
+    );
   } else {
     failures += 1;
     console.error(`✗ failed: ${job.out} (${job.label})`);

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found | Smit Shewale</title>
+    <meta
+      name="description"
+      content="This page doesn't exist — head back to Smit Shewale's portfolio."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1.25rem;
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        background-color: #0b0d12;
+        color: #eef1f6;
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+      }
+      .code {
+        font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #7a8cff;
+      }
+      h1 {
+        margin-top: 0.9rem;
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        background: linear-gradient(135deg, #7a8cff, #a382ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      p {
+        margin: 1rem auto 0;
+        max-width: 26rem;
+        color: #97a2b4;
+        line-height: 1.6;
+      }
+      .mono {
+        font-family: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+        color: #7a8495;
+        font-size: 0.9em;
+      }
+      a {
+        display: inline-block;
+        margin-top: 1.75rem;
+        padding: 0.7rem 1.5rem;
+        border-radius: 0.6rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        color: #ffffff;
+        background-image: linear-gradient(135deg, #4f6bf7, #7c5cf0);
+        box-shadow: 0 8px 20px -10px #4f6bf7;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      a:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 26px -8px #4f6bf7;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code">// 404 — route not found</p>
+      <h1>Lost in the code?</h1>
+      <p>
+        The page <span class="mono" id="missing-path"></span> doesn't exist on
+        this site. Let's get you back to the good stuff.
+      </p>
+      <a href="/portfolio/">Back to the portfolio</a>
+    </main>
+    <script>
+      // Show which path was requested (textContent — never interpreted as HTML).
+      try {
+        document.getElementById("missing-path").textContent =
+          window.location.pathname || "(unknown path)";
+      } catch (e) {
+        /* static fallback stays empty — harmless */
+      }
+    </script>
+  </body>
+</html>

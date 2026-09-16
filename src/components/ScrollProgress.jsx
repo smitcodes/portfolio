@@ -12,5 +12,11 @@ export function ScrollProgress() {
     restDelta: 0.001,
   });
 
-  return <motion.div aria-hidden="true" className="scroll-progress" style={{ scaleX }} />;
+  return (
+    <motion.div
+      aria-hidden="true"
+      className="scroll-progress"
+      style={{ scaleX }}
+    />
+  );
 }

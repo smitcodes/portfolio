@@ -7,8 +7,12 @@
    ============================================================ */
 @theme {
   /* Typography */
-  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: ui-monospace, "Cascadia Code", "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --font-sans:
+    "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono:
+    ui-monospace, "Cascadia Code", "JetBrains Mono", "SF Mono", Menlo, Consolas,
+    monospace;
 
   /* Surfaces (dark default) */
   --color-base-950: #0b0d12; /* page background */
@@ -18,9 +22,9 @@
 
   /* Text */
   --color-content: #eef1f6; /* headings / primary text */
-  --color-muted: #97a2b4;   /* body text */
-  --color-faint: #7a8495;   /* secondary metadata */
-  --color-line: #222b3c;    /* hairlines */
+  --color-muted: #97a2b4; /* body text */
+  --color-faint: #7a8495; /* secondary metadata */
+  --color-line: #222b3c; /* hairlines */
 
   /* Accent — indigo / blue */
   --color-accent-400: #7a8cff;
@@ -192,7 +196,8 @@ body {
 
 /* Decorative blueprint grid (used inside the hero) */
 .bg-grid {
-  background-image: linear-gradient(var(--color-line) 1px, transparent 1px),
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
   background-size: 52px 52px;
 }
@@ -201,7 +206,11 @@ body {
    COMPONENT PRIMITIVES
    ============================================================ */
 .logo-badge {
-  background-image: linear-gradient(135deg, var(--color-accent-500), var(--color-secondary-500));
+  background-image: linear-gradient(
+    135deg,
+    var(--color-accent-500),
+    var(--color-secondary-500)
+  );
   color: #ffffff;
 }
 
@@ -240,9 +249,13 @@ body {
     var(--color-accent-400) 0.88turn,
     var(--color-secondary-400) 1turn
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   mask-composite: exclude;
   animation: beam-spin 3.5s linear infinite;
   pointer-events: none;
@@ -252,7 +265,6 @@ body {
     --beam: 1turn;
   }
 }
-
 
 /* Gradient accent letters: flowing gradient + soft glow.
    Letters get an animation-delay so the shimmer sweeps across the word. */
@@ -268,7 +280,9 @@ body {
   background-clip: text;
   color: transparent;
   animation: gradient-flow 3.5s ease-in-out infinite;
-  filter: drop-shadow(0 0 16px color-mix(in oklab, var(--color-accent-500) 40%, transparent));
+  filter: drop-shadow(
+    0 0 16px color-mix(in oklab, var(--color-accent-500) 40%, transparent)
+  );
 }
 @keyframes gradient-flow {
   0%,
@@ -302,10 +316,9 @@ body {
     var(--color-accent-400)
   );
   transform-origin: center;
-  box-shadow: 0 0 18px color-mix(in oklab, var(--color-accent-500) 55%, transparent);
+  box-shadow: 0 0 18px
+    color-mix(in oklab, var(--color-accent-500) 55%, transparent);
 }
-
-
 
 .btn {
   display: inline-flex;
@@ -320,18 +333,28 @@ body {
   cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s,
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s,
     transform 0.2s;
 }
 .btn-primary {
-  background-image: linear-gradient(135deg, var(--color-accent-500), var(--color-secondary-500));
+  background-image: linear-gradient(
+    135deg,
+    var(--color-accent-500),
+    var(--color-secondary-500)
+  );
   color: #ffffff;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.14) inset,
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
     0 8px 20px -10px var(--color-accent-500);
 }
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset,
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
     0 12px 26px -8px var(--color-accent-500);
 }
 .btn-primary:active {
@@ -345,7 +368,8 @@ body {
 .btn-secondary:hover {
   transform: translateY(-1px);
   border-color: var(--color-accent-500);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset,
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
     0 8px 20px -10px var(--color-accent-600);
 }
 .btn-secondary:active {
@@ -362,7 +386,11 @@ body {
   border: 1px solid var(--color-line);
   background-color: var(--color-base-900);
   color: var(--color-muted);
-  transition: color 0.2s, border-color 0.2s, background-color 0.2s, transform 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background-color 0.2s,
+    transform 0.2s;
 }
 .icon-btn:hover {
   color: var(--color-content);
@@ -389,7 +417,11 @@ body {
   background-color: var(--color-base-900);
   border: 1px solid var(--color-line);
   border-radius: 1rem;
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, background-color 0.25s;
+  transition:
+    border-color 0.25s,
+    box-shadow 0.25s,
+    transform 0.25s,
+    background-color 0.25s;
 }
 
 .field {
@@ -400,11 +432,14 @@ body {
   color: var(--color-content);
   padding: 0.625rem 0.875rem;
   font-size: 0.875rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 .field:focus {
   border-color: var(--color-accent-500);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent-500) 22%, transparent);
+  box-shadow: 0 0 0 3px
+    color-mix(in oklab, var(--color-accent-500) 22%, transparent);
   outline: none;
 }
 .field::placeholder {
@@ -476,7 +511,9 @@ body {
     transparent 62%,
     var(--color-accent-400)
   );
-  animation: ss-aurora-spin 16s linear infinite, ss-drift 20s ease-in-out infinite;
+  animation:
+    ss-aurora-spin 16s linear infinite,
+    ss-drift 20s ease-in-out infinite;
 }
 .aurora-alt {
   animation-duration: 22s, 26s;
@@ -524,19 +561,32 @@ body {
    PROJECT PLACEHOLDER ART (used when a project has no image yet)
    ============================================================ */
 .ph-dev {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1.6px),
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1.6px),
     linear-gradient(135deg, var(--color-accent-600), var(--color-accent-400));
-  background-size: 16px 16px, cover;
+  background-size:
+    16px 16px,
+    cover;
 }
 .ph-data {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1.6px),
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1.6px),
     linear-gradient(135deg, var(--color-accent-500), var(--color-secondary-500));
-  background-size: 16px 16px, cover;
+  background-size:
+    16px 16px,
+    cover;
 }
 .ph-ai {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1.6px),
-    linear-gradient(135deg, var(--color-secondary-500), var(--color-secondary-400));
-  background-size: 16px 16px, cover;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1.6px),
+    linear-gradient(
+      135deg,
+      var(--color-secondary-500),
+      var(--color-secondary-400)
+    );
+  background-size:
+    16px 16px,
+    cover;
 }
 
 /* ============================================================
@@ -547,7 +597,11 @@ body {
   inset: 0 0 auto 0;
   z-index: 60;
   height: 3px;
-  background-image: linear-gradient(90deg, var(--color-accent-400), var(--color-secondary-400));
+  background-image: linear-gradient(
+    90deg,
+    var(--color-accent-400),
+    var(--color-secondary-400)
+  );
   transform-origin: 0 50%;
   pointer-events: none;
 }
@@ -560,8 +614,20 @@ body {
 }
 .marquee-mask {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }
 .marquee-track {
   display: flex;
@@ -653,7 +719,10 @@ body {
   border: 1px solid var(--color-line);
   color: var(--color-muted);
   background-color: color-mix(in oklab, var(--color-base-800) 70%, transparent);
-  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.2s;
 }
 .modal-close:hover {
   color: var(--color-content);
@@ -663,7 +732,21 @@ body {
 .modal-body {
   padding: 1.5rem;
   overflow-y: auto;
-}.modal-label {
+}
+
+/* Résumé preview dialog — wider panel, inline PDF frame */
+.resume-panel {
+  max-width: 56rem;
+  padding: 0;
+}
+.resume-frame {
+  width: 100%;
+  height: min(70vh, 44rem);
+  border: 0;
+  background-color: var(--color-base-800);
+}
+
+.modal-label {
   font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -671,12 +754,15 @@ body {
   color: var(--color-faint);
 }
 
-
 /* ============================================================
    EXPERIENCE TIMELINE - drawing gradient line + dot halo
    ============================================================ */
 .timeline-fill {
-  background-image: linear-gradient(180deg, var(--color-accent-400), var(--color-secondary-400));
+  background-image: linear-gradient(
+    180deg,
+    var(--color-accent-400),
+    var(--color-secondary-400)
+  );
   transform-origin: 0 0;
 }
 .timeline-dot-halo {

@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { portfolio } from "../data/portfolio.js";
 
-export function Footer() {
+export function Footer({ onViewResume }) {
   const year = new Date().getFullYear();
   const { personal } = portfolio;
 
@@ -45,6 +45,18 @@ export function Footer() {
 
         <p className="text-xs text-faint">
           Built with React, Tailwind CSS &amp; Framer Motion.
+          {onViewResume && (
+            <>
+              {" · "}
+              <button
+                type="button"
+                onClick={onViewResume}
+                className="underline-offset-2 hover:text-muted hover:underline"
+              >
+                View résumé
+              </button>
+            </>
+          )}
         </p>
       </div>
     </footer>

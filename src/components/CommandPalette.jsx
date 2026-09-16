@@ -44,7 +44,12 @@ const SECTIONS = [
  * focus and drives the list via aria-activedescendant, so there is only one
  * tab stop and no focus trap to get wrong.
  */
-export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
+export function CommandPalette({
+  theme,
+  onToggleTheme,
+  onChangeAccent,
+  onViewResume,
+}) {
   const reduce = useReducedMotion();
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
@@ -64,7 +69,11 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
 
     for (const section of SECTIONS) {
       // Skip certifications entirely when that section isn't rendered.
-      if (section.id === "certifications" && portfolio.certifications.length === 0) continue;
+      if (
+        section.id === "certifications" &&
+        portfolio.certifications.length === 0
+      )
+        continue;
       list.push({
         id: `nav-${section.id}`,
         group: "Navigate",
@@ -72,7 +81,11 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
         icon: section.icon,
         run: () => {
           const el = document.getElementById(section.id);
-          if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+          if (el)
+            el.scrollIntoView({
+              behavior: reduce ? "auto" : "smooth",
+              block: "start",
+            });
         },
       });
     }
@@ -86,10 +99,16 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
         icon: LayoutGrid,
         run: () => {
           const el = document.getElementById("projects");
-          if (el) el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+          if (el)
+            el.scrollIntoView({
+              behavior: reduce ? "auto" : "smooth",
+              block: "start",
+            });
           // Projects listens for this and opens the matching card's modal.
           window.dispatchEvent(
-            new CustomEvent("portfolio:open-project", { detail: project.title })
+            new CustomEvent("portfolio:open-project", {
+              detail: project.title,
+            }),
           );
         },
       });
@@ -101,14 +120,24 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
         group: "Links",
         label: "Open GitHub profile",
         icon: Github,
-        run: () => window.open(portfolio.personal.github, "_blank", "noopener,noreferrer"),
+        run: () =>
+          window.open(
+            portfolio.personal.github,
+            "_blank",
+            "noopener,noreferrer",
+          ),
       },
       {
         id: "link-linkedin",
         group: "Links",
         label: "Open LinkedIn profile",
         icon: Linkedin,
-        run: () => window.open(portfolio.personal.linkedin, "_blank", "noopener,noreferrer"),
+        run: () =>
+          window.open(
+            portfolio.personal.linkedin,
+            "_blank",
+            "noopener,noreferrer",
+          ),
       },
       {
         id: "link-email",
@@ -126,7 +155,18 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
       {
         id: "link-resume",
         group: "Links",
+        label: "Preview résumé",
+        keywords: "cv resume pdf preview view",
+        icon: FileText,
+        run: () => {
+          if (onViewResume) onViewResume();
+        },
+      },
+      {
+        id: "link-resume-download",
+        group: "Links",
         label: "Download résumé (PDF)",
+        keywords: "cv resume pdf download",
         icon: FileText,
         run: () => {
           const a = document.createElement("a");
@@ -143,7 +183,7 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
         label: `Switch to ${theme === "dark" ? "light" : "dark"} theme`,
         icon: theme === "dark" ? Sun : Moon,
         run: () => onToggleTheme(),
-      }
+      },
     );
 
     for (const accent of ACCENTS) {
@@ -158,7 +198,7 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
     }
 
     return list;
-  }, [theme, reduce, onToggleTheme, onChangeAccent]);
+  }, [theme, reduce, onToggleTheme, onChangeAccent, onViewResume]);
 
   /** Simple ranked filter: label matches first, then keyword/group matches. */
   const results = React.useMemo(() => {
@@ -170,7 +210,9 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
       const at = label.indexOf(q);
       if (at !== -1) {
         scored.push({ cmd, score: at });
-      } else if (`${label} ${cmd.group.toLowerCase()} ${cmd.keywords ?? ""}`.includes(q)) {
+      } else if (
+        `${label} ${cmd.group.toLowerCase()} ${cmd.keywords ?? ""}`.includes(q)
+      ) {
         scored.push({ cmd, score: 100 });
       }
     }
@@ -195,14 +237,17 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
   React.useEffect(() => {
     const onOpenPalette = () => setOpen(true);
     window.addEventListener("portfolio:open-palette", onOpenPalette);
-    return () => window.removeEventListener("portfolio:open-palette", onOpenPalette);
+    return () =>
+      window.removeEventListener("portfolio:open-palette", onOpenPalette);
   }, []);
 
   // Lock scroll, focus the input, and hand focus back on close.
   React.useEffect(() => {
     if (!open) return undefined;
     const previouslyFocused =
-      document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
     document.body.style.overflow = "hidden";
     const id = window.setTimeout(() => inputRef.current?.focus(), 0);
     return () => {
@@ -266,7 +311,10 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
             transition={{ duration: 0.18, ease: "easeOut" }}
           >
             <div className="cmdk-search">
-              <Search className="h-4 w-4 shrink-0 text-faint" aria-hidden="true" />
+              <Search
+                className="h-4 w-4 shrink-0 text-faint"
+                aria-hidden="true"
+              />
               <input
                 ref={inputRef}
                 type="text"
@@ -286,7 +334,12 @@ export function CommandPalette({ theme, onToggleTheme, onChangeAccent }) {
               <kbd className="cmdk-kbd">Esc</kbd>
             </div>
 
-            <ul id="cmdk-list" role="listbox" aria-label="Commands" className="cmdk-list">
+            <ul
+              id="cmdk-list"
+              role="listbox"
+              aria-label="Commands"
+              className="cmdk-list"
+            >
               {results.length === 0 ? (
                 <li className="cmdk-empty">No matching commands</li>
               ) : (

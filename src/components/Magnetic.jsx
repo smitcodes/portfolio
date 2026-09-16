@@ -1,5 +1,10 @@
 import React from "react";
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 
 /**
  * Magnetic wrapper: gently pulls the wrapped element toward the cursor

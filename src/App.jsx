@@ -1,4 +1,5 @@
 import React from "react";
+import { AnimatePresence } from "framer-motion";
 import { portfolio } from "./data/portfolio.js";
 import { Navbar } from "./components/Navbar.jsx";
 import { Hero } from "./components/Hero.jsx";
@@ -14,6 +15,7 @@ import { ScrollProgress } from "./components/ScrollProgress.jsx";
 import { TechMarquee } from "./components/TechMarquee.jsx";
 import { NowStrip } from "./components/NowStrip.jsx";
 import { CommandPalette } from "./components/CommandPalette.jsx";
+import { ResumeModal } from "./components/ResumeModal.jsx";
 
 const BASE_SECTIONS = [
   { id: "about", label: "About" },
@@ -30,17 +32,25 @@ export function App() {
   const hasCertifications = portfolio.certifications.length > 0;
   // Memoized so the Navbar's scroll-spy effect doesn't re-run on theme toggles
   const sections = React.useMemo(
-    () => BASE_SECTIONS.filter((s) => s.id !== "certifications" || hasCertifications),
-    [hasCertifications]
+    () =>
+      BASE_SECTIONS.filter(
+        (s) => s.id !== "certifications" || hasCertifications,
+      ),
+    [hasCertifications],
   );
 
-  const [theme, setTheme] = React.useState(() =>
-    document.documentElement.getAttribute("data-theme") || "dark"
+  const [theme, setTheme] = React.useState(
+    () => document.documentElement.getAttribute("data-theme") || "dark",
   );
 
   const [accent, setAccent] = React.useState(
-    () => document.documentElement.getAttribute("data-accent") || "indigo"
+    () => document.documentElement.getAttribute("data-accent") || "indigo",
   );
+
+  // Résumé preview dialog — opened from the footer's "View résumé" link.
+  const [resumeOpen, setResumeOpen] = React.useState(false);
+  const openResume = React.useCallback(() => setResumeOpen(true), []);
+  const closeResume = React.useCallback(() => setResumeOpen(false), []);
 
   const changeAccent = React.useCallback((next) => {
     if (next === "indigo") {
@@ -97,13 +107,17 @@ export function App() {
         {hasCertifications && <Certifications />}
         <Contact />
       </main>
-      <Footer />
+      <Footer onViewResume={openResume} />
       <BackToTop />
       <CommandPalette
         theme={theme}
         onToggleTheme={toggleTheme}
         onChangeAccent={changeAccent}
+        onViewResume={openResume}
       />
+      <AnimatePresence>
+        {resumeOpen && <ResumeModal onClose={closeResume} />}
+      </AnimatePresence>
     </div>
   );
 }

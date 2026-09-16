@@ -68,7 +68,10 @@ export function Hero() {
 
   const container = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+    },
   };
   const item = {
     hidden: { opacity: 0, y: reduce ? 0 : 18 },
@@ -76,7 +79,11 @@ export function Hero() {
   };
 
   return (
-    <section id="home" aria-label="Introduction" className="relative overflow-hidden">
+    <section
+      id="home"
+      aria-label="Introduction"
+      className="relative overflow-hidden"
+    >
       {/* Cursor spotlight - painted before the grid so the grid sits on top */}
       <div
         ref={glowRef}
@@ -85,7 +92,10 @@ export function Hero() {
       />
 
       {/* Decorative background */}
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
+      <div
+        className="bg-grid pointer-events-none absolute inset-0 opacity-60"
+        aria-hidden="true"
+      />
       <div
         className="aurora-blob pointer-events-none absolute -top-24 right-[-6rem] h-[24rem] w-[24rem] opacity-25"
         aria-hidden="true"
@@ -102,7 +112,10 @@ export function Hero() {
           initial="hidden"
           animate="show"
         >
-          <motion.p variants={item} className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-muted">
+          <motion.p
+            variants={item}
+            className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-muted"
+          >
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full rounded-full bg-accent-500 opacity-60"></span>
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent-400"></span>
@@ -150,7 +163,10 @@ export function Hero() {
             {portfolio.personal.tagline}
           </motion.p>
 
-          <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
+          <motion.div
+            variants={item}
+            className="mt-8 flex flex-wrap items-center gap-3"
+          >
             <Magnetic>
               <a href="#projects" className="btn btn-primary">
                 <LayoutGrid className="h-4 w-4" aria-hidden="true" />
@@ -163,7 +179,10 @@ export function Hero() {
                 Download Resume
               </a>
             </Magnetic>
-            <span className="chip" aria-label={`Location: ${portfolio.personal.location}`}>
+            <span
+              className="chip"
+              aria-label={`Location: ${portfolio.personal.location}`}
+            >
               <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
               {portfolio.personal.location}
             </span>
@@ -212,9 +231,18 @@ export function Hero() {
             aria-label="Code-style summary of the profile: focus on software, data and AI, with tools like Java, React and Python."
           >
             <div className="flex items-center gap-2 text-faint">
-              <span className="h-3 w-3 rounded-full bg-red-400" aria-hidden="true"></span>
-              <span className="h-3 w-3 rounded-full bg-yellow-400" aria-hidden="true"></span>
-              <span className="h-3 w-3 rounded-full bg-green-500" aria-hidden="true"></span>
+              <span
+                className="h-3 w-3 rounded-full bg-red-400"
+                aria-hidden="true"
+              ></span>
+              <span
+                className="h-3 w-3 rounded-full bg-yellow-400"
+                aria-hidden="true"
+              ></span>
+              <span
+                className="h-3 w-3 rounded-full bg-green-500"
+                aria-hidden="true"
+              ></span>
               <span className="ml-auto text-xs opacity-70">profile.js</span>
             </div>
             <pre className="mt-4 overflow-x-auto">
@@ -228,17 +256,23 @@ export function Hero() {
                 {"\n  "}
                 <span className="text-accent-400">focus</span>{" "}
                 <span className="text-faint">:</span>{" "}
-                <span className="text-secondary-400">["software", "data", "ai"]</span>
+                <span className="text-secondary-400">
+                  ["software", "data", "ai"]
+                </span>
                 <span className="text-faint">,</span>
                 {"\n  "}
                 <span className="text-accent-400">projects</span>{" "}
                 <span className="text-faint">:</span>{" "}
-                <span className="text-content">{String(portfolio.projects.length)}</span>
+                <span className="text-content">
+                  {String(portfolio.projects.length)}
+                </span>
                 <span className="text-faint">,</span>
                 {"\n  "}
                 <span className="text-accent-400">stack</span>{" "}
                 <span className="text-faint">:</span>{" "}
-                <span className="text-secondary-400">"Java · React · Python"</span>
+                <span className="text-secondary-400">
+                  "Java · React · Python"
+                </span>
                 {"\n"}
                 <span className="text-faint">{"};"}</span>
                 <span className="cursor-blink text-content">{"_"}</span>

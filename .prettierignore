@@ -1,0 +1,7 @@
+# Prettier never touches build output or binary media
+dist/
+node_modules/
+public/certificates/
+public/projects/
+public/*.png
+public/*.pdf

@@ -1,6 +1,15 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, ChevronRight, Menu, Moon, Palette, Search, Sun, X } from "lucide-react";
+import {
+  Check,
+  ChevronRight,
+  Menu,
+  Moon,
+  Palette,
+  Search,
+  Sun,
+  X,
+} from "lucide-react";
 import { portfolio } from "../data/portfolio.js";
 
 const ACCENTS = [
@@ -18,7 +27,13 @@ function getScrollY() {
   );
 }
 
-export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent }) {
+export function Navbar({
+  sections,
+  theme,
+  accent,
+  onToggleTheme,
+  onChangeAccent,
+}) {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [active, setActive] = React.useState("");
@@ -89,7 +104,10 @@ export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent 
           onClick={() => setOpen(false)}
           aria-label="Back to top"
         >
-          <span className="logo-badge grid h-8 w-8 place-items-center rounded-lg text-sm font-bold" aria-hidden="true">
+          <span
+            className="logo-badge grid h-8 w-8 place-items-center rounded-lg text-sm font-bold"
+            aria-hidden="true"
+          >
             {portfolio.personal.name.charAt(0)}
           </span>
           <span className="text-base font-semibold tracking-tight text-content">
@@ -118,7 +136,9 @@ export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent 
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("portfolio:open-palette"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("portfolio:open-palette"))
+            }
             className="icon-btn"
             aria-label="Open command palette"
             title="Command palette (Ctrl+K)"
@@ -129,7 +149,11 @@ export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent 
             type="button"
             onClick={onToggleTheme}
             className="icon-btn"
-            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            aria-label={
+              theme === "dark"
+                ? "Switch to light theme"
+                : "Switch to dark theme"
+            }
           >
             {theme === "dark" ? (
               <Moon className="h-4 w-4" />
@@ -178,7 +202,10 @@ export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent 
                       />
                       <span className="flex-1 text-left">{a.label}</span>
                       {accent === a.id && (
-                        <Check className="h-4 w-4 text-accent-400" aria-hidden="true" />
+                        <Check
+                          className="h-4 w-4 text-accent-400"
+                          aria-hidden="true"
+                        />
                       )}
                     </button>
                   ))}
@@ -209,7 +236,10 @@ export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent 
             transition={{ duration: 0.22, ease: "easeOut" }}
             className="overflow-hidden border-b border-line bg-base-900 shadow-lg md:hidden"
           >
-            <nav className="page-container flex flex-col py-4" aria-label="Mobile">
+            <nav
+              className="page-container flex flex-col py-4"
+              aria-label="Mobile"
+            >
               {sections.map((s) => (
                 <a
                   key={s.id}
@@ -222,7 +252,10 @@ export function Navbar({ sections, theme, accent, onToggleTheme, onChangeAccent 
                   }`}
                 >
                   {s.label}
-                  <ChevronRight className="h-4 w-4 opacity-60" aria-hidden="true" />
+                  <ChevronRight
+                    className="h-4 w-4 opacity-60"
+                    aria-hidden="true"
+                  />
                 </a>
               ))}
             </nav>

@@ -1,4 +1,3 @@
-import React from "react";
 import { BarChart3, Braces, Database, Globe, Wrench } from "lucide-react";
 import { portfolio } from "../data/portfolio.js";
 import { Reveal } from "../lib/animations.jsx";
@@ -40,7 +39,9 @@ export function Skills() {
                 <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-base-800 text-accent-400">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <h3 className="text-base font-semibold text-content">{label}</h3>
+                <h3 className="text-base font-semibold text-content">
+                  {label}
+                </h3>
                 <span className="ml-auto text-xs tabular-nums text-faint">
                   {portfolio.skills[key].length}
                 </span>

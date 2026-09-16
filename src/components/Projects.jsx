@@ -8,7 +8,10 @@ import { ProjectModal } from "./ProjectModal.jsx";
 export function Projects() {
   // Filter options are derived from the data — an "AI" tab only appears
   // once a project with category "AI" is added to portfolio.js.
-  const categories = ["All", ...new Set(portfolio.projects.map((p) => p.category))];
+  const categories = [
+    "All",
+    ...new Set(portfolio.projects.map((p) => p.category)),
+  ];
 
   const [filter, setFilter] = React.useState("All");
   const [selected, setSelected] = React.useState(null);

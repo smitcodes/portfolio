@@ -42,7 +42,9 @@ export function useGitHubStats(username = DEFAULT_USER) {
       try {
         const [userRes, repoRes] = await Promise.all([
           fetch(`https://api.github.com/users/${username}`),
-          fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`),
+          fetch(
+            `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`,
+          ),
         ]);
         if (!userRes.ok || !repoRes.ok) return;
 
@@ -71,7 +73,10 @@ export function useGitHubStats(username = DEFAULT_USER) {
 
         if (!cancelled) setStats(data);
         try {
-          localStorage.setItem(CACHE_KEY, JSON.stringify({ at: Date.now(), data }));
+          localStorage.setItem(
+            CACHE_KEY,
+            JSON.stringify({ at: Date.now(), data }),
+          );
         } catch {
           /* storage unavailable — live value still applied this session */
         }

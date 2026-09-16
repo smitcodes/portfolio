@@ -15,7 +15,10 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Smit Shewale | Computer Science Engineer" />
+    <meta
+      property="og:title"
+      content="Smit Shewale | Computer Science Engineer"
+    />
     <meta
       property="og:description"
       content="Software development, data analytics and AI projects by Smit Shewale — Computer Science Engineering student."
@@ -39,7 +42,10 @@
       name="twitter:image:alt"
       content="Smit Shewale — Computer Science Engineer working across software development, data analytics and AI."
     />
-    <meta name="twitter:title" content="Smit Shewale | Computer Science Engineer" />
+    <meta
+      name="twitter:title"
+      content="Smit Shewale | Computer Science Engineer"
+    />
     <meta
       name="twitter:description"
       content="Software development, data analytics and AI projects by Smit Shewale — Computer Science Engineering student."
@@ -56,7 +62,10 @@
     <!-- PWA -->
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <meta name="apple-mobile-web-app-title" content="Smit Shewale" />
     <meta name="application-name" content="Smit Shewale" />
 
@@ -67,10 +76,12 @@
           var stored = localStorage.getItem("ss-theme");
           var theme = stored;
           if (!theme) {
-            var media =
-              (window.matchMedia || function () {
+            var media = (
+              window.matchMedia ||
+              function () {
                 return { matches: false };
-              })("(prefers-color-scheme: light)");
+              }
+            )("(prefers-color-scheme: light)");
             theme = media && media.matches ? "light" : "dark";
           }
           document.documentElement.setAttribute("data-theme", theme);

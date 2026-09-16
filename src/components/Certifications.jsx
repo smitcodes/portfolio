@@ -38,13 +38,19 @@ export function Certifications() {
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-line bg-base-800 text-accent-400">
                     <Award className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  {cert.type && <span className="chip text-[11px]">{cert.type}</span>}
+                  {cert.type && (
+                    <span className="chip text-[11px]">{cert.type}</span>
+                  )}
                 </div>
 
-                <h3 className="mt-4 text-base font-semibold text-content">{cert.title}</h3>
+                <h3 className="mt-4 text-base font-semibold text-content">
+                  {cert.title}
+                </h3>
                 <p className="mt-1 text-sm text-muted">{cert.issuer}</p>
 
-                {cert.date && <p className="mt-3 text-xs text-faint">{cert.date}</p>}
+                {cert.date && (
+                  <p className="mt-3 text-xs text-faint">{cert.date}</p>
+                )}
                 {cert.credentialId && (
                   <p className="mt-1 font-mono text-[11px] text-faint">
                     ID: {cert.credentialId}
@@ -74,7 +80,10 @@ export function Certifications() {
                         aria-label={`Verify the credential for ${cert.title}`}
                       >
                         Verify
-                        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                        <ExternalLink
+                          className="h-3.5 w-3.5"
+                          aria-hidden="true"
+                        />
                       </a>
                     )}
                   </div>

@@ -1,6 +1,6 @@
-import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Check, ExternalLink, Github, X } from "lucide-react";
+import { useDialogA11y } from "../lib/useDialogA11y.js";
 
 /**
  * Full project overview dialog, formatted in labelled sections:
@@ -10,9 +10,6 @@ import { Check, ExternalLink, Github, X } from "lucide-react";
  */
 export function ProjectModal({ project, onClose }) {
   const reduce = useReducedMotion();
-  const closeRef = React.useRef(null);
-  const panelRef = React.useRef(null);
-  const returnFocusRef = React.useRef(null);
   const {
     title,
     description,
@@ -24,76 +21,11 @@ export function ProjectModal({ project, onClose }) {
     demo,
   } = project;
 
-  React.useEffect(() => {
-    // Remember what was focused so focus can be handed back on close.
-    returnFocusRef.current =
-      document.activeElement instanceof HTMLElement ? document.activeElement : null;
-
-    /** Visible, focusable elements inside the dialog, in DOM order. */
-    const focusableInPanel = () => {
-      const panel = panelRef.current;
-      if (!panel) return [];
-      return Array.from(
-        panel.querySelectorAll(
-          'a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])'
-        )
-      ).filter((el) => el.getClientRects().length > 0);
-    };
-
-    const onKey = (e) => {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        onClose();
-        return;
-      }
-
-      // Trap Tab / Shift+Tab inside the dialog so focus can never reach
-      // the page behind it while the modal is open.
-      if (e.key !== "Tab") return;
-
-      const focusable = focusableInPanel();
-      if (focusable.length === 0) {
-        e.preventDefault();
-        return;
-      }
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      const active = document.activeElement;
-      const inside = panelRef.current?.contains(active);
-
-      if (e.shiftKey) {
-        if (!inside || active === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else if (!inside || active === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    if (closeRef.current) closeRef.current.focus();
-
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-
-      // Hand focus back to whatever opened the dialog. If the card body was
-      // clicked (rather than its button) focus may sit on <body>, so fall back
-      // to the card's own "View details" trigger for this project.
-      let target = returnFocusRef.current;
-      if (!target || target === document.body || !document.contains(target)) {
-        const selector = `[data-project-trigger=${JSON.stringify(title)}]`;
-        target = document.querySelector(selector);
-      }
-      if (target && typeof target.focus === "function" && document.contains(target)) {
-        target.focus({ preventScroll: true });
-      }
-    };
-  }, [onClose]);
+  // Shared dialog behaviour: Escape to close, scroll lock, focus trap,
+  // and focus restoration (falls back to this card's trigger button).
+  const { panelRef, initialFocusRef } = useDialogA11y(onClose, () =>
+    document.querySelector(`[data-project-trigger=${JSON.stringify(title)}]`),
+  );
 
   return (
     <motion.div
@@ -117,7 +49,7 @@ export function ProjectModal({ project, onClose }) {
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <button
-          ref={closeRef}
+          ref={initialFocusRef}
           type="button"
           onClick={onClose}
           className="modal-close"
@@ -154,8 +86,14 @@ export function ProjectModal({ project, onClose }) {
               <h4 className="modal-label">Key Features</h4>
               <ul className="mt-3 space-y-2.5">
                 {highlights.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm text-muted">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-400" aria-hidden="true" />
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-sm text-muted"
+                  >
+                    <Check
+                      className="mt-0.5 h-4 w-4 shrink-0 text-accent-400"
+                      aria-hidden="true"
+                    />
                     <span className="leading-relaxed">{item}</span>
                   </li>
                 ))}

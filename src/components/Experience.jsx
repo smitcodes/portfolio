@@ -56,7 +56,10 @@ export function Experience() {
                 aria-hidden="true"
               >
                 {reduce ? (
-                  <span className="timeline-dot-halo" style={{ opacity: 0.45 }} />
+                  <span
+                    className="timeline-dot-halo"
+                    style={{ opacity: 0.45 }}
+                  />
                 ) : (
                   <motion.span
                     className="timeline-dot-halo"
@@ -71,7 +74,9 @@ export function Experience() {
 
               <div className="surface-card mb-8 p-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-xl font-semibold text-content">{item.role}</h3>
+                  <h3 className="text-xl font-semibold text-content">
+                    {item.role}
+                  </h3>
                   <span className="chip">
                     <Calendar className="h-3.5 w-3.5" aria-hidden="true" />
                     {item.period}

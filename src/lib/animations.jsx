@@ -13,7 +13,12 @@ import { motion, useReducedMotion } from "framer-motion";
  * Memoized so parent state changes (e.g. typing in the contact form)
  * don't re-render every revealed section.
  */
-export const Reveal = React.memo(function Reveal({ className = "", delay = 0, amount = 0.18, children }) {
+export const Reveal = React.memo(function Reveal({
+  className = "",
+  delay = 0,
+  amount = 0.18,
+  children,
+}) {
   const reduce = useReducedMotion();
   return (
     <motion.div

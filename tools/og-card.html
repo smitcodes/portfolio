@@ -22,98 +22,218 @@
         --s400: #a382ff;
         --s500: #7c5cf0;
       }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 1200px; height: 630px; overflow: hidden; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
       body {
         position: relative;
         background: var(--bg);
         color: var(--content);
-        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        font-family:
+          "Inter",
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          sans-serif;
         -webkit-font-smoothing: antialiased;
       }
       /* blueprint grid, faded at the edges */
       .grid {
-        position: absolute; inset: 0;
+        position: absolute;
+        inset: 0;
         background-image:
-          linear-gradient(to right, rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+          linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.055) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.055) 1px,
+            transparent 1px
+          );
         background-size: 48px 48px;
-        -webkit-mask-image: radial-gradient(125% 105% at 28% 42%, #000 28%, transparent 78%);
-        mask-image: radial-gradient(125% 105% at 28% 42%, #000 28%, transparent 78%);
+        -webkit-mask-image: radial-gradient(
+          125% 105% at 28% 42%,
+          #000 28%,
+          transparent 78%
+        );
+        mask-image: radial-gradient(
+          125% 105% at 28% 42%,
+          #000 28%,
+          transparent 78%
+        );
       }
       /* aurora glows */
-      .aur { position: absolute; border-radius: 50%; filter: blur(95px); }
+      .aur {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(95px);
+      }
       .aur.a {
-        width: 540px; height: 540px; top: -200px; right: -130px; opacity: 0.55;
-        background: radial-gradient(circle at 40% 40%, var(--a500), transparent 66%);
+        width: 540px;
+        height: 540px;
+        top: -200px;
+        right: -130px;
+        opacity: 0.55;
+        background: radial-gradient(
+          circle at 40% 40%,
+          var(--a500),
+          transparent 66%
+        );
       }
       .aur.b {
-        width: 480px; height: 480px; bottom: -215px; left: -150px; opacity: 0.45;
-        background: radial-gradient(circle at 55% 45%, var(--s500), transparent 66%);
+        width: 480px;
+        height: 480px;
+        bottom: -215px;
+        left: -150px;
+        opacity: 0.45;
+        background: radial-gradient(
+          circle at 55% 45%,
+          var(--s500),
+          transparent 66%
+        );
       }
 
       .wrap {
-        position: relative; height: 100%;
-        display: grid; grid-template-columns: 1fr 384px;
-        gap: 52px; align-items: center; padding: 0 72px 24px;
+        position: relative;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 384px;
+        gap: 52px;
+        align-items: center;
+        padding: 0 72px 24px;
       }
 
       .pill {
-        display: inline-flex; align-items: center; gap: 10px;
-        border: 1px solid var(--line); background: rgba(255, 255, 255, 0.03);
-        border-radius: 999px; padding: 8px 18px;
-        font-size: 16px; font-weight: 500; color: var(--muted); letter-spacing: 0.2px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 999px;
+        padding: 8px 18px;
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: 0.2px;
       }
       .dot {
-        width: 9px; height: 9px; border-radius: 50%;
-        background: var(--a400); box-shadow: 0 0 12px 2px rgba(122, 140, 255, 0.75);
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--a400);
+        box-shadow: 0 0 12px 2px rgba(122, 140, 255, 0.75);
       }
       h1 {
         margin-top: 26px;
-        font-size: 76px; font-weight: 800; line-height: 1.03; letter-spacing: -2.5px;
+        font-size: 76px;
+        font-weight: 800;
+        line-height: 1.03;
+        letter-spacing: -2.5px;
       }
       .roles {
-        margin-top: 20px; font-size: 33px; font-weight: 700; letter-spacing: -0.6px;
+        margin-top: 20px;
+        font-size: 33px;
+        font-weight: 700;
+        letter-spacing: -0.6px;
         background: linear-gradient(100deg, var(--a400), var(--s400));
-        -webkit-background-clip: text; background-clip: text; color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
       .tag {
-        margin-top: 18px; max-width: 620px;
-        font-size: 19px; line-height: 1.55; color: var(--muted);
+        margin-top: 18px;
+        max-width: 620px;
+        font-size: 19px;
+        line-height: 1.55;
+        color: var(--muted);
       }
-      .chips { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; }
+      .chips {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
       .chip {
         font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
-        font-size: 14px; color: var(--muted);
-        border: 1px solid var(--line); background: rgba(255, 255, 255, 0.028);
-        border-radius: 8px; padding: 7px 13px;
+        font-size: 14px;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.028);
+        border-radius: 8px;
+        padding: 7px 13px;
       }
-    .code {
+      .code {
         font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
-        font-size: 14.5px; line-height: 1.78;
-        background: var(--surface); border: 1px solid var(--line);
-        border-radius: 18px; padding: 20px 22px 24px;
+        font-size: 14.5px;
+        line-height: 1.78;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px 22px 24px;
         box-shadow: 0 34px 66px -34px rgba(0, 0, 0, 0.95);
       }
-      .code .bar { display: flex; align-items: center; gap: 7px; padding-bottom: 16px; }
-      .code .bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
-      .code .bar em {
-        margin-left: auto; font-style: normal; font-size: 12.5px; color: var(--faint);
+      .code .bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding-bottom: 16px;
       }
-      .c-faint { color: var(--faint); }
-      .c-key { color: var(--a400); }
-      .c-val { color: var(--content); }
-      .c-str { color: var(--s400); }
-      pre { white-space: pre; }
+      .code .bar i {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: block;
+      }
+      .code .bar em {
+        margin-left: auto;
+        font-style: normal;
+        font-size: 12.5px;
+        color: var(--faint);
+      }
+      .c-faint {
+        color: var(--faint);
+      }
+      .c-key {
+        color: var(--a400);
+      }
+      .c-val {
+        color: var(--content);
+      }
+      .c-str {
+        color: var(--s400);
+      }
+      pre {
+        white-space: pre;
+      }
 
       .foot {
-        position: absolute; left: 72px; right: 72px; bottom: 24px;
-        display: flex; align-items: center; justify-content: space-between;
+        position: absolute;
+        left: 72px;
+        right: 72px;
+        bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
-        font-size: 14px; color: var(--faint);
-        border-top: 1px solid var(--line); padding-top: 16px;
+        font-size: 14px;
+        color: var(--faint);
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
       }
-      .foot b { color: var(--a400); font-weight: 500; }
+      .foot b {
+        color: var(--a400);
+        font-weight: 500;
+      }
     </style>
   </head>
   <body>
@@ -123,12 +243,16 @@
 
     <div class="wrap">
       <div>
-        <span class="pill"><span class="dot"></span>Computer Science Engineer</span>
+        <span class="pill"
+          ><span class="dot"></span>Computer Science Engineer</span
+        >
         <h1>Smit Shewale</h1>
-        <div class="roles">Software Developer &middot; Data Analyst &middot; AI Enthusiast</div>
+        <div class="roles">
+          Software Developer &middot; Data Analyst &middot; AI Enthusiast
+        </div>
         <p class="tag">
-          I build reliable software and turn raw data into clear, actionable insight &mdash;
-          working across development, analytics and AI.
+          I build reliable software and turn raw data into clear, actionable
+          insight &mdash; working across development, analytics and AI.
         </p>
         <div class="chips">
           <span class="chip">Java</span>
@@ -142,9 +266,9 @@
 
       <div class="code">
         <div class="bar">
-          <i style="background:#f87171"></i>
-          <i style="background:#facc15"></i>
-          <i style="background:#22c55e"></i>
+          <i style="background: #f87171"></i>
+          <i style="background: #facc15"></i>
+          <i style="background: #22c55e"></i>
           <em>profile.js</em>
         </div>
         <pre><span class="c-faint">// Smit Shewale</span>

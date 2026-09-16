@@ -43,7 +43,11 @@ Sitemap: ${SITE_URL}sitemap.xml
       return html.replaceAll("%SITE_URL%", SITE_URL);
     },
     generateBundle() {
-      this.emitFile({ type: "asset", fileName: "sitemap.xml", source: sitemap });
+      this.emitFile({
+        type: "asset",
+        fileName: "sitemap.xml",
+        source: sitemap,
+      });
       this.emitFile({ type: "asset", fileName: "robots.txt", source: robots });
     },
   };

@@ -95,7 +95,14 @@ export const SectionHeading = React.memo(function SectionHeading({
                   whileHover={
                     reduce
                       ? undefined
-                      : { y: -6, transition: { type: "spring", stiffness: 500, damping: 14 } }
+                      : {
+                          y: -6,
+                          transition: {
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 14,
+                          },
+                        }
                   }
                 >
                   {ch}
@@ -115,7 +122,11 @@ export const SectionHeading = React.memo(function SectionHeading({
           show: {
             scaleX: 1,
             opacity: 1,
-            transition: { duration: 0.55, delay: reduce ? 0 : 0.3, ease: "easeOut" },
+            transition: {
+              duration: 0.55,
+              delay: reduce ? 0 : 0.3,
+              ease: "easeOut",
+            },
           },
         }}
       />

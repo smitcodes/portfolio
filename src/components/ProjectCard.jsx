@@ -1,6 +1,17 @@
 import React from "react";
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
-import { BarChart3, BrainCircuit, Code2, ExternalLink, Github } from "lucide-react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
+import {
+  BarChart3,
+  BrainCircuit,
+  Code2,
+  ExternalLink,
+  Github,
+} from "lucide-react";
 import { portfolio } from "../data/portfolio.js";
 
 const PLACEHOLDER_BY_CATEGORY = {
@@ -9,9 +20,14 @@ const PLACEHOLDER_BY_CATEGORY = {
   AI: { className: "ph-ai", icon: BrainCircuit },
 };
 
-export const ProjectCard = React.memo(function ProjectCard({ project, index, onView }) {
+export const ProjectCard = React.memo(function ProjectCard({
+  project,
+  index,
+  onView,
+}) {
   const reduce = useReducedMotion();
-  const { title, description, category, technologies, github, demo, image } = project;
+  const { title, description, category, technologies, github, demo, image } =
+    project;
 
   const githubUrl = github || portfolio.personal.github;
   const placeholder = PLACEHOLDER_BY_CATEGORY[category] ?? {
@@ -61,12 +77,15 @@ export const ProjectCard = React.memo(function ProjectCard({ project, index, onV
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.15 }}
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.18 } }}
-      transition={{ duration: 0.45, delay: (index % 2) * 0.05, ease: "easeOut" }}
+      transition={{
+        duration: 0.45,
+        delay: (index % 2) * 0.05,
+        ease: "easeOut",
+      }}
       className="surface-card group flex cursor-pointer flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:border-accent-500 hover:shadow-lg"
     >
       {/* Media */}
       <div className="aspect-video overflow-hidden">
-
         {image ? (
           <img
             src={image}
@@ -97,7 +116,10 @@ export const ProjectCard = React.memo(function ProjectCard({ project, index, onV
           {title}
         </h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">{description}</p>
-        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies used">
+        <ul
+          className="mt-4 flex flex-wrap gap-2"
+          aria-label="Technologies used"
+        >
           {technologies.map((tech) => (
             <li key={tech} className="chip text-xs">
               {tech}

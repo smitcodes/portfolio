@@ -1,4 +1,3 @@
-import React from "react";
 import { Building2, FolderKanban, MapPin, Mail, Sparkles } from "lucide-react";
 import { portfolio } from "../data/portfolio.js";
 import { Reveal } from "../lib/animations.jsx";
@@ -37,7 +36,9 @@ export function About() {
     education[0]
       ? {
           big: education[0].degree.split("—")[0].trim(),
-          small: education[0].degree.split("—").slice(1).join("").trim() || "Pursuing",
+          small:
+            education[0].degree.split("—").slice(1).join("").trim() ||
+            "Pursuing",
         }
       : null,
     experience[0]
@@ -87,13 +88,20 @@ export function About() {
               </h3>
               <ul className="mt-5 space-y-3">
                 {facts.map((fact) => (
-                  <li key={fact.label} className="flex items-center gap-3 text-sm">
+                  <li
+                    key={fact.label}
+                    className="flex items-center gap-3 text-sm"
+                  >
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-line bg-base-800 text-accent-400">
                       <fact.icon className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <span className="min-w-0 flex-1">
-                      <span className="block text-xs text-faint">{fact.label}</span>
-                      <span className="block truncate text-muted">{fact.value}</span>
+                      <span className="block text-xs text-faint">
+                        {fact.label}
+                      </span>
+                      <span className="block truncate text-muted">
+                        {fact.value}
+                      </span>
                     </span>
                   </li>
                 ))}
@@ -139,7 +147,10 @@ export function About() {
               </h3>
               <dl className="mt-5 grid auto-rows-fr grid-cols-2 gap-5">
                 {tiles.map((tile) => (
-                  <div key={tile.small} className="flex flex-col justify-center rounded-xl border border-line bg-base-800 p-4">
+                  <div
+                    key={tile.small}
+                    className="flex flex-col justify-center rounded-xl border border-line bg-base-800 p-4"
+                  >
                     <dt className="text-xl font-bold tracking-tight text-content">
                       {tile.big}
                     </dt>

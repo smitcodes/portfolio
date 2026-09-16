@@ -52,7 +52,7 @@ export function StatCounters() {
     const base = portfolio.stats ?? [];
     if (!live) return base;
     return base.map((stat) =>
-      stat.source === "repos" ? { ...stat, value: live.publicRepos } : stat
+      stat.source === "repos" ? { ...stat, value: live.publicRepos } : stat,
     );
   }, [live]);
 
@@ -65,7 +65,11 @@ export function StatCounters() {
           key={stat.label}
           className="surface-card flex flex-col items-center justify-center rounded-xl p-5 text-center"
         >
-          <Counter value={stat.value} suffix={stat.suffix ?? ""} reduce={reduce} />
+          <Counter
+            value={stat.value}
+            suffix={stat.suffix ?? ""}
+            reduce={reduce}
+          />
           <p className="mt-1.5 text-xs font-medium text-faint">{stat.label}</p>
         </div>
       ))}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>Smit Shewale | Computer Science Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Smit Shewale, a Computer Science Engineering student specializing in software development, data analytics and AI — featuring projects, skills, experience and certifications."
+    />
+    <meta name="author" content="Smit Shewale" />
+    <meta name="theme-color" content="#0b0d12" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Smit Shewale | Computer Science Engineer" />
+    <meta
+      property="og:description"
+      content="Software development, data analytics and AI projects by Smit Shewale — Computer Science Engineering student."
+    />
+    <meta property="og:url" content="https://smit-shewale.dev/" />
+    <meta property="og:image" content="/profile.jpg" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Smit Shewale | Computer Science Engineer" />
+    <meta
+      name="twitter:description"
+      content="Software development, data analytics and AI projects by Smit Shewale — Computer Science Engineering student."
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Apply stored theme before first paint to avoid flashes -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("ss-theme");
+          var theme = stored;
+          if (!theme) {
+            var media =
+              (window.matchMedia || function () {
+                return { matches: false };
+              })("(prefers-color-scheme: light)");
+            theme = media && media.matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", theme);
+          var storedAccent = localStorage.getItem("ss-accent");
+          if (storedAccent) {
+            document.documentElement.setAttribute("data-accent", storedAccent);
+          }
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

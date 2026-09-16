@@ -25,10 +25,10 @@ export const portfolio = {
     roles: ["Software Developer", "Data Analyst", "AI Enthusiast"],
     tagline:
       "I build reliable software and turn raw data into clear, actionable insight — currently exploring the intersection of development, analytics and AI.",
-    location: "Solapur,India", // ← replace with your city, e.g. "Pune, India"
-    email: "smit9552@gmail.com", // ← replace
+    location: "Solapur, India",
+    email: "smit9552@gmail.com",
     github: "https://github.com/smitcodes",
-    linkedin: "https://www.linkedin.com/in/smitshewale", // ← replace
+    linkedin: "https://www.linkedin.com/in/smitshewale",
   },
 
   about: {
@@ -157,20 +157,69 @@ export const portfolio = {
         "Task 2 — exploratory data analysis and dashboards",
         "Task 3 — deep-dive analysis with interactive dashboards",
         "Task 4 — data storytelling with clear visual narratives",
-      ],      technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter Notebook"],
+      ],
+      technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Jupyter Notebook"],
       github: "https://github.com/smitcodes/DataAnalyst-Internship-Portfolio",
       demo: "",
       image: "",
     },
   ],
-  // ↓ Uncomment and fill in to show certifications.
-  //   Leave the array empty to keep the section hidden until then.
+  // Certifications — the section AND the navbar link appear automatically
+  // as soon as this array is non-empty.
+  //
+  //   title         required
+  //   issuer        required
+  //   type          optional chip label, e.g. "Course" | "Internship"
+  //   date          optional
+  //   credentialId  optional (shown in monospace)
+  //   certificate   optional path inside public/ → renders a "View certificate"
+  //   credentialUrl optional external verification link → renders "Verify"
+  //
+  // NOTE: dates for the NPTEL / Udemy / Deloitte entries were derived from the
+  // PDFs' own metadata — double-check them against the certificates if needed.
   certifications: [
-    // {
-    //   title: "Example Certification Title",
-    //   issuer: "Example Issuer",
-    //   date: "Jan 2026",
-    //   credentialUrl: "https://example.com/credential",
-    // },
+    {
+      title: "Data Analytics Internship",
+      issuer: "ApexPlanet Software Pvt. Ltd.",
+      type: "Internship",
+      date: "Mar – May 2026",
+      credentialId: "APSPL2630181",
+      certificate: "certificates/apexplanet-data-analytics-internship.pdf",
+    },
+    {
+      title: "Engineer's Day Celebration 2K24 — Certificate of Participation",
+      issuer: "Walchand Institute of Technology, Solapur",
+      type: "Achievement",
+      date: "2024",
+      certificate: "certificates/wit-engineers-day-2k24.pdf",
+    },
+    {
+      title: "Edge Computing",
+      issuer: "NPTEL",
+      type: "Course",
+      date: "2026",
+      certificate: "certificates/nptel-edge-computing.pdf",
+    },
+    {
+      title: "Soft Skill Development",
+      issuer: "NPTEL",
+      type: "Course",
+      date: "2025",
+      certificate: "certificates/nptel-soft-skill-development.pdf",
+    },
+    {
+      title: "Programming in C — The Complete Course",
+      issuer: "Udemy",
+      type: "Course",
+      date: "Dec 2023",
+      certificate: "certificates/udemy-programming-in-c.pdf",
+    },
+    {
+      title: "Deloitte Job Simulation",
+      issuer: "Deloitte (Forage)",
+      type: "Job Simulation",
+      date: "Feb 2026",
+      certificate: "certificates/deloitte-job-simulation.pdf",
+    },
   ],
 };

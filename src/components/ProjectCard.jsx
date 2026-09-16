@@ -111,6 +111,7 @@ export const ProjectCard = React.memo(function ProjectCard({ project, index, onV
         <button
           type="button"
           onClick={() => onView(project)}
+          data-project-trigger={title}
           className="btn btn-primary flex-1 justify-center"
           aria-label={`View full details of ${title}`}
         >

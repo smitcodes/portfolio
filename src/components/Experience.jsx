@@ -34,13 +34,13 @@ export function Experience() {
         <div ref={railRef} className="relative mt-14 lg:mt-16">
           {/* Static track */}
           <div
-            className="absolute left-4 top-0 h-full w-[1px] bg-line"
+            className="absolute left-4 top-0 h-full w-px bg-line"
             aria-hidden="true"
           />
           {/* Gradient fill that draws downward with scroll */}
           <motion.div
             aria-hidden="true"
-            className="timeline-fill absolute left-4 top-0 h-full w-[1px]"
+            className="timeline-fill absolute left-4 top-0 h-full w-px"
             style={reduce ? { scaleY: 1 } : { scaleY: railScale }}
           />
 

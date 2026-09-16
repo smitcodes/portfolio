@@ -97,11 +97,11 @@ export function Hero() {
         aria-hidden="true"
       />
       <div
-        className="aurora-blob pointer-events-none absolute -top-24 right-[-6rem] h-[24rem] w-[24rem] opacity-25"
+        className="aurora-blob pointer-events-none absolute -top-24 -right-24 h-96 w-96 opacity-25"
         aria-hidden="true"
       />
       <div
-        className="aurora-blob aurora-alt pointer-events-none absolute bottom-[-8rem] left-[-6rem] h-[22rem] w-[22rem] opacity-20"
+        className="aurora-blob aurora-alt pointer-events-none absolute -bottom-32 -left-24 h-88 w-88 opacity-20"
         aria-hidden="true"
       />
 

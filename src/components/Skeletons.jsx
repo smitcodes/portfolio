@@ -31,7 +31,7 @@ function Skel({ className = "" }) {
 function HeadingSkel() {
   return (
     <div aria-hidden="true">
-      <Skel className="h-4 w-28 !rounded-full" />
+      <Skel className="h-4 w-28 rounded-full!" />
       <Skel className="mt-3 h-8 w-72 max-w-full" />
       <Skel className="mt-3 h-4 w-96 max-w-full" />
     </div>
@@ -42,7 +42,7 @@ export function TechMarqueeFallback() {
   return (
     <div className="marquee-band" aria-hidden="true">
       <div className="page-container">
-        <Skel className="h-10 !rounded-full" />
+        <Skel className="h-10 rounded-full!" />
       </div>
     </div>
   );
@@ -80,13 +80,13 @@ export function SkillsFallback() {
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <div key={i} className="surface-card p-6">
               <div className="flex items-center gap-3">
-                <Skel className="h-10 w-10 !rounded-xl" />
+                <Skel className="h-10 w-10 rounded-xl!" />
                 <Skel className="h-4 w-24" />
               </div>
               <div className="mt-5 flex flex-wrap gap-2">
-                <Skel className="h-6 w-16 !rounded-full" />
-                <Skel className="h-6 w-20 !rounded-full" />
-                <Skel className="h-6 w-14 !rounded-full" />
+                <Skel className="h-6 w-16 rounded-full!" />
+                <Skel className="h-6 w-20 rounded-full!" />
+                <Skel className="h-6 w-14 rounded-full!" />
               </div>
             </div>
           ))}
@@ -102,7 +102,7 @@ export function ExperienceFallback() {
       <div className="page-container">
         <HeadingSkel />
         <div className="relative mt-14 lg:mt-16">
-          <div className="absolute left-4 top-0 h-full w-[1px] bg-line" />
+          <div className="absolute left-4 top-0 h-full w-px bg-line" />
           {[0, 1].map((i) => (
             <div key={i} className="relative pl-12">
               <span className="absolute left-[0.935rem] top-7 block h-3 w-3 rounded-full border-2 border-line bg-accent-400" />
@@ -122,15 +122,15 @@ export function ProjectsFallback() {
         <HeadingSkel />
         <div className="mt-12 flex flex-wrap gap-2">
           {[0, 1, 2].map((i) => (
-            <Skel key={i} className="h-9 w-24 !rounded-lg" />
+            <Skel key={i} className="h-9 w-24 rounded-lg!" />
           ))}
         </div>
         <div className="mt-10 grid gap-7 md:grid-cols-2">
           {[0, 1].map((i) => (
             <div key={i} className="surface-card overflow-hidden">
-              <Skel className="aspect-video !rounded-none !border-0" />
+              <Skel className="aspect-video rounded-none! border-0!" />
               <div className="p-5">
-                <Skel className="h-4 w-20 !rounded-full" />
+                <Skel className="h-4 w-20 rounded-full!" />
                 <Skel className="mt-3 h-6 w-3/4" />
                 <Skel className="mt-2 h-4 w-full" />
                 <Skel className="mt-2 h-4 w-5/6" />

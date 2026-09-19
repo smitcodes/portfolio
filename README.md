@@ -1,7 +1,7 @@
 <h1 align="center">Smit Shewale — Portfolio</h1>
 
 <p align="center">
-  <a href="https://smitcodes.github.io/portfolio/"><strong>🔗 View Live</strong></a>
+  <a href="https://portfolio-darb-mu-13.vercel.app"><strong>🔗 View Live</strong></a>
   ·
   <a href="https://github.com/smitcodes/portfolio/issues">Report an issue</a>
 </p>

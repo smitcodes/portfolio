@@ -44,7 +44,9 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
-      globals: { ...globals.node },
+      // tools scripts are Node, but puppeteer page.evaluate() callbacks run
+      // in the browser, so browser globals are needed there too.
+      globals: { ...globals.node, ...globals.browser },
     },
     rules: {
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],

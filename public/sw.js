@@ -11,7 +11,7 @@
  *
  * Bump CACHE_VERSION when you want to force clients to drop old caches.
  */
-const CACHE_VERSION = "v1";
+const CACHE_VERSION = "v2";
 const CACHE_NAME = `smit-portfolio-${CACHE_VERSION}`;
 
 /** Kept intentionally small — hashed assets cache themselves on first view. */

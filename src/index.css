@@ -111,6 +111,11 @@
    ============================================================ */
 html {
   scroll-behavior: smooth;
+  /* Clip any accidental horizontal overflow at the root so phones (iOS
+     Safari pan/zoom in particular) can never shift the page out of frame.
+     `clip` avoids creating a scroll container; `hidden` is the fallback. */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 html[data-theme="dark"] {
   color-scheme: dark;

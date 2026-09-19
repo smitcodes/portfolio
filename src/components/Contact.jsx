@@ -76,7 +76,7 @@ export function Contact() {
           subtitle={contact.message}
         />
 
-        <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
           {/* Direct links */}
           <Reveal className="space-y-5">
             <p className="text-base leading-relaxed text-muted">
@@ -191,7 +191,7 @@ export function Contact() {
               className="surface-card flex flex-col gap-4 p-6"
               aria-label="Contact form (opens your email app)"
             >
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="contact-name"

@@ -28,7 +28,7 @@ export function Skills() {
           subtitle="Languages, frameworks and tools I use to build software and turn data into insight."
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {CATEGORY_META.map(({ key, label, icon: Icon }, index) => (
             <Reveal
               key={key}

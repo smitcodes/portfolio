@@ -404,6 +404,15 @@ body {
   transform: translateY(-2px);
 }
 
+/* Ultra-narrow phones (<360px): shrink header icon buttons so the
+   logo + 4-button row still fits inside the viewport with padding. */
+@media (max-width: 359.98px) {
+  header .icon-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
 .chip {
   display: inline-flex;
   align-items: center;

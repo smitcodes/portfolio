@@ -68,7 +68,7 @@ export function About() {
 
         <StatCounters />
 
-        <div className="mt-14 grid items-start gap-10 lg:grid-cols-5">
+        <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-5">
           <Reveal className="lg:col-span-3 space-y-5 text-base leading-relaxed">
             <h3 className="text-sm font-semibold uppercase tracking-wider text-faint">
               Introduction
@@ -111,7 +111,7 @@ export function About() {
         </div>
 
         {/* Interest chips + derived stats */}
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <Reveal className="h-full">
             <div className="surface-card h-full p-6">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-faint">

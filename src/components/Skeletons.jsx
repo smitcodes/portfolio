@@ -58,11 +58,11 @@ export function AboutFallback() {
             <Skel key={i} className="h-24" />
           ))}
         </div>
-        <div className="mt-14 grid items-start gap-10 lg:grid-cols-5">
+        <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-5">
           <Skel className="h-48 lg:col-span-3" />
           <Skel className="h-48 lg:col-span-2" />
         </div>
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <Skel className="h-56" />
           <Skel className="h-56" />
         </div>
@@ -76,7 +76,7 @@ export function SkillsFallback() {
     <div className="py-24 lg:py-32" aria-hidden="true">
       <div className="page-container">
         <HeadingSkel />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <div key={i} className="surface-card p-6">
               <div className="flex items-center gap-3">
@@ -148,7 +148,7 @@ export function CertificationsFallback() {
     <div className="py-24 lg:py-32" aria-hidden="true">
       <div className="page-container">
         <HeadingSkel />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[0, 1, 2].map((i) => (
             <Skel key={i} className="h-56" />
           ))}
@@ -163,7 +163,7 @@ export function ContactFallback() {
     <div className="bg-base-950 py-24 lg:py-32" aria-hidden="true">
       <div className="page-container">
         <HeadingSkel />
-        <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
+        <div className="mt-14 grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
           <Skel className="h-72" />
           <Skel className="h-96" />
         </div>

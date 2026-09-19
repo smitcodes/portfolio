@@ -33,7 +33,6 @@ update content.
 | ------------------------------------------ | -------------------------------------------------------------- |
 | `public/resume.pdf`                        | Your resume (linked from Hero, résumé modal and palette)       |
 | `public/certificates/*.pdf`                | Certificate PDFs, referenced by `certifications[].certificate` |
-| `public/projects/*.jpg`                    | Project screenshots, referenced in `portfolio.js`              |
 | `public/icon-*.png`, `public/og-image.png` | Generated — run `npm run assets` after editing `tools/`        |
 | `tools/og-card.html`, `tools/maskable.svg` | Sources for the generated images                               |
 
@@ -45,7 +44,9 @@ Each project supports `title`, `category`, `description`, `technologies`,
 - `category` drives the filters — use `"Development"`, `"Data Analytics"` or
   `"AI"`. New categories appear in the filter bar automatically.
 - Leave `github` / `demo` as `""` and the button is hidden (no broken links).
-- Leave `image` as `""` to show an auto-generated gradient placeholder.
+- Leave `image` as `""` to show an auto-generated gradient placeholder —
+  screenshots are optional: drop a file in `public/projects/` and set
+  `image: "/projects/your-file.jpg"` when you want one.
 
 ### Certifications
 
@@ -67,8 +68,19 @@ Static site — deploy `dist/` anywhere:
 
 - **GitHub Pages / Netlify / Vercel / Cloudflare Pages**: build command
   `npm run build`, output `dist`.
-- The resume link uses `/resume.pdf`, so deploy to the domain root (or adjust
-  `vite.config.js` `base` for a sub-path).
+- All asset links (resume, certificates) go through Vite's `base` setting, so
+  sub-path deploys (e.g. `username.github.io/portfolio/`) work out of the box.
+- The deployed URL for SEO tags, sitemap and robots.txt is set in one place:
+  `SITE_URL` in `vite.config.js`.
+
+## Dev tools
+
+- `npm run assets` — regenerates `public/` icons and the OG share card from
+  `tools/og-card.html` / `tools/maskable.svg` (uses a local Chrome/Edge).
+- `node tools/overflow-probe.mjs [width]` — headless layout audit that walks
+  every element and reports anything extending past the viewport. Catches
+  horizontal overflow that `scrollWidth` hides (e.g. behind
+  `overflow-x: hidden`). Requires a dev or preview server running.
 
 ## Accessibility & motion
 

@@ -22,7 +22,7 @@ export function Certifications() {
           subtitle="Certifications that back up what I do."
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {portfolio.certifications.map((cert, index) => {
             const certificateHref = cert.certificate
               ? `${BASE}${cert.certificate}`

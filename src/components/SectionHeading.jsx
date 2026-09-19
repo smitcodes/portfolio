@@ -65,12 +65,15 @@ export const SectionHeading = React.memo(function SectionHeading({
               const bare = word.toLowerCase().replace(/[^a-z]/g, "");
               const isAccent = accentLower !== "" && bare === accentLower;
               return (
-                <span key={`${word}-${wi}`}>
+                <React.Fragment key={`${word}-${wi}`}>
                   <span className={isAccent ? "text-gradient" : undefined}>
                     {word}
                   </span>
-                  {wi < words.length - 1 ? " " : ""}
-                </span>
+                  {/* Space lives OUTSIDE the word box: inside an
+                      inline-block it would be trimmed at the line-box end
+                      and words would render jammed together. */}
+                  {wi < words.length - 1 ? " " : ""}
+                </React.Fragment>
               );
             })}
           </span>
@@ -87,57 +90,59 @@ export const SectionHeading = React.memo(function SectionHeading({
               const bare = word.toLowerCase().replace(/[^a-z]/g, "");
               const isAccent = accentLower !== "" && bare === accentLower;
               return (
-                <motion.span
-                  key={`${word}-${wi}`}
-                  aria-hidden="true"
-                  className="title-word"
-                  variants={{
-                    hidden: {},
-                    show: {
-                      transition: { staggerChildren: 0.03 },
-                    },
-                  }}
-                >
-                  {Array.from(word).map((ch, ci) => (
-                    <motion.span
-                      key={`${ch}-${ci}`}
-                      className={`title-letter${isAccent ? " text-gradient" : ""}`}
-                      style={
-                        isAccent
-                          ? { animationDelay: `${ci * 0.09}s` }
-                          : undefined
-                      }
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          y: 26,
-                          rotate: 5,
-                        },
-                        show: {
-                          opacity: 1,
-                          y: 0,
-                          rotate: 0,
+                <React.Fragment key={`${word}-${wi}`}>
+                  <motion.span
+                    aria-hidden="true"
+                    className="title-word"
+                    variants={{
+                      hidden: {},
+                      show: {
+                        transition: { staggerChildren: 0.03 },
+                      },
+                    }}
+                  >
+                    {Array.from(word).map((ch, ci) => (
+                      <motion.span
+                        key={`${ch}-${ci}`}
+                        className={`title-letter${isAccent ? " text-gradient" : ""}`}
+                        style={
+                          isAccent
+                            ? { animationDelay: `${ci * 0.09}s` }
+                            : undefined
+                        }
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            y: 26,
+                            rotate: 5,
+                          },
+                          show: {
+                            opacity: 1,
+                            y: 0,
+                            rotate: 0,
+                            transition: {
+                              type: "spring",
+                              stiffness: 320,
+                              damping: 24,
+                            },
+                          },
+                        }}
+                        whileHover={{
+                          y: -6,
                           transition: {
                             type: "spring",
-                            stiffness: 320,
-                            damping: 24,
+                            stiffness: 500,
+                            damping: 14,
                           },
-                        },
-                      }}
-                      whileHover={{
-                        y: -6,
-                        transition: {
-                          type: "spring",
-                          stiffness: 500,
-                          damping: 14,
-                        },
-                      }}
-                    >
-                      {ch}
-                    </motion.span>
-                  ))}
-                  {wi < words.length - 1 ? " " : ""}
-                </motion.span>
+                        }}
+                      >
+                        {ch}
+                      </motion.span>
+                    ))}
+                  </motion.span>
+                  {/* Same rule: space outside the inline-block word box */}
+                  {wi < words.length - 1 ? " " : ""}
+                </React.Fragment>
               );
             })}
           </motion.span>

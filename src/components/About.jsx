@@ -145,7 +145,7 @@ export function About() {
               <h3 className="text-sm font-semibold uppercase tracking-wider text-faint">
                 At a Glance
               </h3>
-              <dl className="mt-5 grid auto-rows-fr grid-cols-2 gap-5">
+              <dl className="mt-5 grid auto-rows-fr grid-cols-1 gap-5 min-[420px]:grid-cols-2">
                 {tiles.map((tile) => (
                   <div
                     key={tile.small}

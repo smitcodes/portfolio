@@ -105,7 +105,7 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="page-container relative z-10 grid items-center gap-12 pb-28 pt-36 lg:grid-cols-12 lg:pb-32">
+      <div className="page-container relative z-10 grid items-center gap-10 pb-20 pt-28 lg:grid-cols-12 lg:gap-12 lg:pb-32 lg:pt-36">
         <motion.div
           className="lg:col-span-7"
           variants={container}
@@ -133,7 +133,7 @@ export function Hero() {
           {roles.length > 0 && (
             <motion.div
               variants={item}
-              className="mt-6 flex items-center gap-2 text-2xl font-bold sm:text-3xl"
+              className="mt-6 flex min-h-9 items-center gap-2 text-xl font-bold sm:text-3xl"
             >
               <AnimatePresence mode="wait">
                 <motion.span
@@ -165,22 +165,29 @@ export function Hero() {
 
           <motion.div
             variants={item}
-            className="mt-8 flex flex-wrap items-center gap-3"
+            className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center"
           >
-            <Magnetic>
-              <a href="#projects" className="btn btn-primary">
+            <Magnetic className="w-full sm:w-auto">
+              <a
+                href="#projects"
+                className="btn btn-primary w-full justify-center sm:w-auto"
+              >
                 <LayoutGrid className="h-4 w-4" aria-hidden="true" />
                 View Projects
               </a>
             </Magnetic>
-            <Magnetic>
-              <a href={RESUME_URL} download className="btn btn-secondary">
+            <Magnetic className="w-full sm:w-auto">
+              <a
+                href={RESUME_URL}
+                download
+                className="btn btn-secondary w-full justify-center sm:w-auto"
+              >
                 <Download className="h-4 w-4" aria-hidden="true" />
                 Download Resume
               </a>
             </Magnetic>
             <span
-              className="chip"
+              className="chip self-start sm:self-auto"
               aria-label={`Location: ${portfolio.personal.location}`}
             >
               <MapPin className="h-3.5 w-3.5" aria-hidden="true" />

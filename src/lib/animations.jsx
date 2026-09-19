@@ -6,9 +6,9 @@ import { motion, useReducedMotion } from "framer-motion";
  * Fades content up as it enters the viewport and honours
  * prefers-reduced-motion via framer-motion's hook.
  *
- * `once: false` — the reveal REPLAYS every time the element comes back
- * into view: scroll down -> animates in, scroll past it -> resets,
- * scroll back -> animates in again (not just on first page load).
+ * `once: true` — each element animates in a single time. Replaying on
+ * every scroll pass (`once: false`) kept springs alive while scrolling
+ * and was the main source of jank on phones.
  *
  * Memoized so parent state changes (e.g. typing in the contact form)
  * don't re-render every revealed section.
@@ -25,7 +25,7 @@ export const Reveal = React.memo(function Reveal({
       className={className}
       initial={{ opacity: 0, y: reduce ? 0 : 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount }}
+      viewport={{ once: true, amount }}
       transition={{ duration: 0.5, delay, ease: "easeOut" }}
     >
       {children}

@@ -11,7 +11,9 @@ import { useGitHubStats } from "../lib/useGitHubStats.js";
  */
 function Counter({ value, suffix, reduce }) {
   const ref = React.useRef(null);
-  const inView = useInView(ref, { amount: 0.6, once: false });
+  // Animate in once: replaying the count-up on every scroll pass kept
+  // JS-driven setState loops alive while scrolling on phones.
+  const inView = useInView(ref, { amount: 0.6, once: true });
   const [display, setDisplay] = React.useState(0);
 
   React.useEffect(() => {
@@ -19,8 +21,16 @@ function Counter({ value, suffix, reduce }) {
       setDisplay(value);
       return undefined;
     }
+    // Coarse pointers (phones/tablets): skip the 1.2s JS count-up loop,
+    // show the final value. Same pixels, zero animation cost.
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: none), (pointer: coarse)").matches
+    ) {
+      setDisplay(value);
+      return undefined;
+    }
     if (!inView) {
-      setDisplay(0);
       return undefined;
     }
     const controls = animate(0, value, {

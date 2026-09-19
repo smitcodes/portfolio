@@ -20,6 +20,16 @@ export const SectionHeading = React.memo(function SectionHeading({
 }) {
   const reduce = useReducedMotion();
 
+  // Phones: skip the per-letter spring wave (20-40 motion nodes per
+  // heading × 6 sections) — render the same styled title statically.
+  // Matches Tailwind's sm breakpoint via matchMedia, evaluated once.
+  const [isCoarseSmall] = React.useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 639px)").matches
+      : false,
+  );
+  const simple = reduce || isCoarseSmall;
+
   const words = title.split(" ");
   const accentLower = (accent || "").toLowerCase();
 
@@ -28,16 +38,16 @@ export const SectionHeading = React.memo(function SectionHeading({
       className="relative z-10 text-center"
       initial="hidden"
       whileInView="show"
-      viewport={{ once: false, amount: 0.35 }}
+      viewport={{ once: true, amount: 0.35 }}
       variants={{
         hidden: {},
-        show: { transition: { staggerChildren: reduce ? 0 : 0.08 } },
+        show: { transition: { staggerChildren: simple ? 0 : 0.08 } },
       }}
     >
       <motion.p
         className="eyebrow-chip mx-auto"
         variants={{
-          hidden: { opacity: 0, y: reduce ? 0 : 10 },
+          hidden: { opacity: 0, y: simple ? 0 : 10 },
           show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
         }}
       >
@@ -47,71 +57,91 @@ export const SectionHeading = React.memo(function SectionHeading({
       <motion.h2
         id={id}
         aria-label={title}
-        className="mt-7 text-4xl font-bold tracking-tight text-content sm:text-5xl"
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: reduce ? 0 : 0.14 } },
-        }}
+        className="mt-7 text-3xl font-bold tracking-tight text-content sm:text-5xl"
       >
-        {words.map((word, wi) => {
-          const bare = word.toLowerCase().replace(/[^a-z]/g, "");
-          const isAccent = accentLower !== "" && bare === accentLower;
-          return (
-            <motion.span
-              key={`${word}-${wi}`}
-              aria-hidden="true"
-              className="title-word"
-              variants={{
-                hidden: {},
-                show: { transition: { staggerChildren: reduce ? 0 : 0.03 } },
-              }}
-            >
-              {Array.from(word).map((ch, ci) => (
+        {simple ? (
+          <span aria-hidden="true">
+            {words.map((word, wi) => {
+              const bare = word.toLowerCase().replace(/[^a-z]/g, "");
+              const isAccent = accentLower !== "" && bare === accentLower;
+              return (
+                <span key={`${word}-${wi}`}>
+                  <span className={isAccent ? "text-gradient" : undefined}>
+                    {word}
+                  </span>
+                  {wi < words.length - 1 ? " " : ""}
+                </span>
+              );
+            })}
+          </span>
+        ) : (
+          <motion.span
+            aria-hidden="true"
+            className="contents"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.14 } },
+            }}
+          >
+            {words.map((word, wi) => {
+              const bare = word.toLowerCase().replace(/[^a-z]/g, "");
+              const isAccent = accentLower !== "" && bare === accentLower;
+              return (
                 <motion.span
-                  key={`${ch}-${ci}`}
-                  className={`title-letter${isAccent ? " text-gradient" : ""}`}
-                  style={
-                    isAccent && !reduce
-                      ? { animationDelay: `${ci * 0.09}s` }
-                      : undefined
-                  }
+                  key={`${word}-${wi}`}
+                  aria-hidden="true"
+                  className="title-word"
                   variants={{
-                    hidden: {
-                      opacity: 0,
-                      y: reduce ? 0 : 26,
-                      rotate: reduce ? 0 : 5,
-                    },
+                    hidden: {},
                     show: {
-                      opacity: 1,
-                      y: 0,
-                      rotate: 0,
-                      transition: {
-                        type: "spring",
-                        stiffness: 320,
-                        damping: 24,
-                      },
+                      transition: { staggerChildren: 0.03 },
                     },
                   }}
-                  whileHover={
-                    reduce
-                      ? undefined
-                      : {
-                          y: -6,
+                >
+                  {Array.from(word).map((ch, ci) => (
+                    <motion.span
+                      key={`${ch}-${ci}`}
+                      className={`title-letter${isAccent ? " text-gradient" : ""}`}
+                      style={
+                        isAccent
+                          ? { animationDelay: `${ci * 0.09}s` }
+                          : undefined
+                      }
+                      variants={{
+                        hidden: {
+                          opacity: 0,
+                          y: 26,
+                          rotate: 5,
+                        },
+                        show: {
+                          opacity: 1,
+                          y: 0,
+                          rotate: 0,
                           transition: {
                             type: "spring",
-                            stiffness: 500,
-                            damping: 14,
+                            stiffness: 320,
+                            damping: 24,
                           },
-                        }
-                  }
-                >
-                  {ch}
+                        },
+                      }}
+                      whileHover={{
+                        y: -6,
+                        transition: {
+                          type: "spring",
+                          stiffness: 500,
+                          damping: 14,
+                        },
+                      }}
+                    >
+                      {ch}
+                    </motion.span>
+                  ))}
+                  {wi < words.length - 1 ? " " : ""}
                 </motion.span>
-              ))}
-              {wi < words.length - 1 ? "\u00A0" : ""}
-            </motion.span>
-          );
-        })}
+              );
+            })}
+          </motion.span>
+        )}
       </motion.h2>
 
       <motion.span
@@ -124,7 +154,7 @@ export const SectionHeading = React.memo(function SectionHeading({
             opacity: 1,
             transition: {
               duration: 0.55,
-              delay: reduce ? 0 : 0.3,
+              delay: simple ? 0 : 0.3,
               ease: "easeOut",
             },
           },
@@ -135,7 +165,7 @@ export const SectionHeading = React.memo(function SectionHeading({
         <motion.p
           className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted"
           variants={{
-            hidden: { opacity: 0, y: reduce ? 0 : 12 },
+            hidden: { opacity: 0, y: simple ? 0 : 12 },
             show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
           }}
         >

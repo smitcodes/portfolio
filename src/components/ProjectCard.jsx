@@ -78,11 +78,14 @@ export const ProjectCard = React.memo(function ProjectCard({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={() => onView(project)}
-      style={{ rotateX: tiltX, rotateY: tiltY, transformPerspective: 900 }}
-      layout
+      style={
+        canTilt
+          ? { rotateX: tiltX, rotateY: tiltY, transformPerspective: 900 }
+          : undefined
+      }
       initial={{ opacity: 0, y: reduce ? 0 : 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.15 }}
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.18 } }}
       transition={{
         duration: 0.45,

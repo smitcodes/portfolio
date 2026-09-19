@@ -6,10 +6,12 @@ import { motion, useScroll, useSpring } from "framer-motion";
  */
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
+  // Stiff, well-damped spring settles in fewer frames than a loose one —
+  // less per-scroll work on phones for the same visual fill.
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 24,
-    restDelta: 0.001,
+    stiffness: 200,
+    damping: 30,
+    restDelta: 0.01,
   });
 
   return (

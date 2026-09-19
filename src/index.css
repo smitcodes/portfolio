@@ -539,6 +539,16 @@ body {
     animation: none;
   }
 }
+/* Phones: smaller, softer blobs — blur(60px) over a 384px layer is the
+   single most expensive paint on low-end mobile GPUs. Desktop keeps
+   the full effect. */
+@media (max-width: 767px) {
+  .aurora-blob {
+    filter: blur(36px);
+    opacity: 0.16;
+    transform: translateZ(0);
+  }
+}
 
 /* ============================================================
    FILM-GRAIN NOISE OVERLAY (decorative finish)
@@ -555,6 +565,13 @@ body {
 }
 [data-theme="light"] .noise-overlay {
   opacity: 0.025;
+}
+/* Phones: the full-screen grain costs a repaint every frame on weak GPUs
+   and is invisible at 0.045 opacity — kill it below the md breakpoint. */
+@media (max-width: 767px) {
+  .noise-overlay {
+    display: none;
+  }
 }
 
 /* ============================================================
@@ -587,6 +604,14 @@ body {
   background-size:
     16px 16px,
     cover;
+}
+
+/* Skip offscreen work: the browser may skip layout/paint for sections
+   outside the viewport, then render them just before they scroll in.
+   The intrinsic-size estimate keeps the scrollbar stable. */
+main section[id] {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 /* ============================================================

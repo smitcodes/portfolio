@@ -9,6 +9,16 @@ export function Experience() {
   const reduce = useReducedMotion();
   const railRef = React.useRef(null);
 
+  // Phones: the scroll-linked gradient rail costs a useScroll + spring
+  // update on every scroll frame for a 1px decorative line — render the
+  // static track only. Desktop keeps the drawing effect.
+  const [isSmall] = React.useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 767px)").matches
+      : false,
+  );
+  const simpleRail = reduce || isSmall;
+
   // The gradient line draws downward as the section passes through the viewport
   const { scrollYProgress } = useScroll({
     target: railRef,
@@ -37,12 +47,14 @@ export function Experience() {
             className="absolute left-4 top-0 h-full w-px bg-line"
             aria-hidden="true"
           />
-          {/* Gradient fill that draws downward with scroll */}
-          <motion.div
-            aria-hidden="true"
-            className="timeline-fill absolute left-4 top-0 h-full w-px"
-            style={reduce ? { scaleY: 1 } : { scaleY: railScale }}
-          />
+          {/* Gradient fill that draws downward with scroll (desktop only) */}
+          {!simpleRail && (
+            <motion.div
+              aria-hidden="true"
+              className="timeline-fill absolute left-4 top-0 h-full w-px"
+              style={{ scaleY: railScale }}
+            />
+          )}
 
           {portfolio.experience.map((item, index) => (
             <Reveal
